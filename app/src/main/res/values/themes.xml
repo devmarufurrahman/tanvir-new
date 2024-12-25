@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.TanvirHome" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:statusBarColor">@color/splash_background</item>
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+
+    <style name="Theme.TanvirHome" parent="Base.Theme.TanvirHome" />
+</resources>

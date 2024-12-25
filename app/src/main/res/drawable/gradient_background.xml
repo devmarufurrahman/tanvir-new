@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Beautiful gradient with multiple colors -->
+    <gradient
+        android:type="linear"
+        android:angle="135"
+        android:startColor="#4158D0"
+        android:centerColor="#A91D9F"
+        android:endColor="#B48838" />
+
+    <!-- Optional: Add rounded corners -->
+    <corners android:radius="19dp"/>
+</shape>
