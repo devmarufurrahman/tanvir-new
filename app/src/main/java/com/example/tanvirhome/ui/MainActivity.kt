@@ -1,4 +1,4 @@
-package com.example.tanvirhome
+package com.example.tanvirhome.ui
 
 import android.app.DatePickerDialog
 import android.content.Intent
@@ -8,14 +8,13 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.tanvirhome.R
 import com.example.tanvirhome.databinding.ActivityMainBinding
+import com.example.tanvirhome.utils.SendData
 import com.google.android.material.navigation.NavigationView
 import java.util.Calendar
 
@@ -75,6 +74,66 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 //        Side navigation view end here ================================================
 
         setupInputs()
+
+        binding.dataSubmitButton.setOnClickListener {
+            val name = binding.nameInput.text.toString().trim()
+            val fatherName = binding.fatherNameInput.text.toString().trim()
+            val motherName = binding.motherNameInput.text.toString().trim()
+            val nid = binding.nidInput.text.toString().trim()
+            val dateOfBirth = binding.dateOfBirthInput.text.toString().trim()
+            val address = binding.addressInput.text.toString().trim()
+            val wardName = binding.wardNameInput.text.toString().trim()
+            val thanaName = binding.thanaNameInput.text.toString().trim()
+            val mobile = binding.mobileInput.text.toString().trim()
+            val email = binding.emailInput.text.toString().trim()
+
+            when {
+                name.isEmpty() -> {
+                    binding.nameInput.error = "Name cannot be empty"
+                    return@setOnClickListener
+                }
+                fatherName.isEmpty() -> {
+                    binding.fatherNameInput.error = "Father's name cannot be empty"
+                    return@setOnClickListener
+                }
+                motherName.isEmpty() -> {
+                    binding.motherNameInput.error = "Mother's name cannot be empty"
+                    return@setOnClickListener
+                }
+                nid.isEmpty() -> {
+                    binding.nidInput.error = "NID cannot be empty"
+                    return@setOnClickListener
+                }
+                dateOfBirth.isEmpty() -> {
+                    binding.dateOfBirthInput.error = "Date of Birth cannot be empty"
+                    return@setOnClickListener
+                }
+                address.isEmpty() -> {
+                    binding.addressInput.error = "Address cannot be empty"
+                    return@setOnClickListener
+                }
+                wardName.isEmpty() -> {
+                    binding.wardNameInput.error = "Ward name cannot be empty"
+                    return@setOnClickListener
+                }
+                thanaName.isEmpty() -> {
+                    binding.thanaNameInput.error = "Thana name cannot be empty"
+                    return@setOnClickListener
+                }
+                mobile.isEmpty() || !mobile.matches("\\d{10}".toRegex()) -> {
+                    binding.mobileInput.error = "Enter a valid 10-digit mobile number"
+                    return@setOnClickListener
+                }
+                email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
+                    binding.emailInput.error = "Enter a valid email address"
+                    return@setOnClickListener
+                }
+                else -> {
+                    SendData.dataCollection(name, fatherName, motherName, nid, dateOfBirth, address, wardName, thanaName, mobile, email, this)
+                }
+            }
+        }
+
 
 
     }

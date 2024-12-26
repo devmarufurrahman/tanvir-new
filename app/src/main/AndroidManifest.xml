@@ -17,19 +17,19 @@
         android:theme="@style/Theme.TanvirHome"
         tools:targetApi="31">
         <activity
-            android:name=".ComplainUs"
+            android:name=".ui.ComplainUs"
             android:exported="false" />
         <activity
-            android:name=".ContactMe"
+            android:name=".ui.ContactMe"
             android:exported="false" />
         <activity
-            android:name=".AboutUs"
+            android:name=".ui.AboutUs"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".ui.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,14 +1,12 @@
-package com.example.tanvirhome
+package com.example.tanvirhome.ui
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.animation.AnimationUtils
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.tanvirhome.R
 import com.example.tanvirhome.databinding.ActivitySplashScreenBinding
 
 class SplashScreen : AppCompatActivity() {
