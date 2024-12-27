@@ -46,7 +46,7 @@ class ComplainUs : AppCompatActivity() {
                 FilePickerUtility.setupFilePicker(this)
             }
         } else {
-            FilePickerUtility.openAppSettings(this)
+//            FilePickerUtility.openAppSettings(this)
         }
 
         binding.browseFileButton.setOnClickListener {
@@ -55,7 +55,7 @@ class ComplainUs : AppCompatActivity() {
                 FilePickerUtility.openFilePicker(filePickerLauncher)
             } else {
                 // Legacy permission-based file picker for Android 7-10
-                FilePickerUtility.openLegacyFilePicker(this)
+//                FilePickerUtility.openLegacyFilePicker(this)
             }
         }
 
