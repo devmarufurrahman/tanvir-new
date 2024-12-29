@@ -4,13 +4,14 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.tanvirhome.databinding.ActivityContactMeBinding
 import com.example.tanvirhome.utils.FilePickerUtility
-import com.example.tanvirhome.utils.SendData
+import com.example.tanvirhome.services.SendData
 import kotlinx.coroutines.launch
 
 class ContactMe : AppCompatActivity() {
@@ -46,7 +47,7 @@ class ContactMe : AppCompatActivity() {
                 FilePickerUtility.setupFilePicker(this)
             }
         } else {
-            FilePickerUtility.openAppSettings(this)
+
         }
 
         binding.browseFileButton.setOnClickListener {
@@ -55,30 +56,35 @@ class ContactMe : AppCompatActivity() {
                 FilePickerUtility.openFilePicker(filePickerLauncher)
             } else {
                 // Legacy permission-based file picker for Android 7-10
-                FilePickerUtility.openLegacyFilePicker(this)
+
             }
         }
 
         binding.sendMessageButton.setOnClickListener {
+            binding.progressBar.visibility = View.VISIBLE
             val name = binding.nameEditText.text.toString()
             val phone = binding.phoneEditText.text.toString()
             val message = binding.messageEditText.text.toString()
             when {
                 name.isEmpty() -> {
+                    binding.progressBar.visibility = View.GONE
                     binding.nameEditText.error = "Name cannot be empty"
                     return@setOnClickListener
                 }
                 phone.isEmpty() || !phone.matches("\\d{11}".toRegex()) -> {
+                    binding.progressBar.visibility = View.GONE
                     binding.phoneEditText.error = "Enter a valid 11-digit phone number"
                     return@setOnClickListener
                 }
                 message.isEmpty() -> {
+                    binding.progressBar.visibility = View.GONE
                     binding.messageEditText.error = "Message cannot be empty"
                     return@setOnClickListener
                 }
                 else -> {
+
                     // All validations pass, proceed with further actions
-                    fileUri?.let { it1 -> SendData.contactMessage(name, phone, message, it1,this) }
+                   SendData.contactMessage(name, phone, message, fileUri,this, binding.progressBar)
                 }
             }
         }

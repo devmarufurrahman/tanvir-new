@@ -4,13 +4,14 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.tanvirhome.databinding.ActivityComplainUsBinding
 import com.example.tanvirhome.utils.FilePickerUtility
-import com.example.tanvirhome.utils.SendData
+import com.example.tanvirhome.services.SendData
 import kotlinx.coroutines.launch
 
 class ComplainUs : AppCompatActivity() {
@@ -61,25 +62,29 @@ class ComplainUs : AppCompatActivity() {
 
 
         binding.sendMessageButton.setOnClickListener {
+            binding.progressBar.visibility = View.VISIBLE
             val name = binding.nameEditText.text.toString()
             val phone = binding.phoneEditText.text.toString()
             val message = binding.messageEditText.text.toString()
             when {
                 name.isEmpty() -> {
+                    binding.progressBar.visibility = View.GONE
                     binding.nameEditText.error = "Name cannot be empty"
                     return@setOnClickListener
                 }
                 phone.isEmpty() || !phone.matches("\\d{11}".toRegex()) -> {
+                    binding.progressBar.visibility = View.GONE
                     binding.phoneEditText.error = "Enter a valid 11-digit phone number"
                     return@setOnClickListener
                 }
                 message.isEmpty() -> {
+                    binding.progressBar.visibility = View.GONE
                     binding.messageEditText.error = "Message cannot be empty"
                     return@setOnClickListener
                 }
                 else -> {
-                    // All validations pass, proceed with further actions
-                    fileUri?.let { it1 -> SendData.contactMessage(name, phone, message, it1,this) }
+                    // All validations pass, proceed with further action
+                    SendData.complainMessage(name, phone, message, fileUri,this, binding.progressBar)
                 }
             }
         }

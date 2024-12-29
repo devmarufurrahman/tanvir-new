@@ -14,7 +14,8 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.tanvirhome.R
 import com.example.tanvirhome.databinding.ActivityMainBinding
-import com.example.tanvirhome.utils.SendData
+import com.example.tanvirhome.services.GetData
+import com.example.tanvirhome.services.SendData
 import com.google.android.material.navigation.NavigationView
 import java.util.Calendar
 
@@ -34,6 +35,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+//        setup banner
+        GetData.showBanner(this, binding.banner.imageTitle, binding.banner.mainImage)
         // Setup toolbar
         // Initialize Views
         binding.apply {
@@ -129,7 +132,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     return@setOnClickListener
                 }
                 else -> {
-                    SendData.dataCollection(name, fatherName, motherName, nid, dateOfBirth, address, wardName, thanaName, mobile, email, this)
+                    SendData.dataCollection(name, fatherName, motherName, nid, dateOfBirth, address, wardName, thanaName, mobile, email, this, binding.progressBar)
                 }
             }
         }
