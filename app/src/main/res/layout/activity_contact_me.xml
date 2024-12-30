@@ -17,9 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorAccent"
-            android:layout_alignParentTop="true"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:title="Contact Me"
+            app:title="@string/contact_me"
             app:titleTextColor="@color/white"
             app:titleTextAppearance="@style/Toolbar.TitleText">
         </androidx.appcompat.widget.Toolbar>
@@ -36,7 +35,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Get in Touch"
+                android:text="@string/get_in_touch"
                 android:textColor="@color/white"
                 android:textSize="32sp"
                 android:textStyle="bold"
@@ -46,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="We'd love to hear from you"
+                android:text="@string/we_d_love_to_hear_from_you"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 />
@@ -103,7 +102,7 @@
                         android:id="@+id/nameEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Full Name"
+                        android:hint="@string/full_name"
                         android:inputType="textPersonName"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -121,7 +120,7 @@
                         android:id="@+id/phoneEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Phone Number"
+                        android:hint="@string/phone_number"
                         android:inputType="phone"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -139,7 +138,7 @@
                         android:id="@+id/messageEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Your Message"
+                        android:hint="@string/your_message"
                         android:inputType="textMultiLine"
                         android:minLines="4"
                         android:gravity="top"
@@ -173,7 +172,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
-                            android:text="Drop your files here or"
+                            android:text="@string/drop_your_files_here_or"
                             android:textColor="@color/text_secondary"
                             />
                         <!-- Option 1: Modern Outlined Button with Icon and Custom Style -->
@@ -208,7 +207,7 @@
                     android:id="@+id/sendMessageButton"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:text="Send Message"
+                    android:text="@string/send_message"
                     android:textSize="16sp"
                     android:textAllCaps="false"
                     app:cornerRadius="12dp"

@@ -30,22 +30,22 @@
         android:layout_gravity="center_horizontal" />
 
     <!-- Email or Additional Information -->
-    <TextView
-        android:id="@+id/textViewUserEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="demo@gmail.com"
-        android:textColor="@android:color/white"
-        android:layout_gravity="center_horizontal" />
+<!--    <TextView-->
+<!--        android:id="@+id/textViewUserEmail"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="demo@gmail.com"-->
+<!--        android:textColor="@android:color/white"-->
+<!--        android:layout_gravity="center_horizontal" />-->
 
 
-    <!-- Email or Additional Information -->
-    <TextView
-        android:id="@+id/textViewUserRole"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Admin"
-        android:textColor="@android:color/white"
-        android:layout_gravity="center_horizontal" />
+<!--    &lt;!&ndash; Email or Additional Information &ndash;&gt;-->
+<!--    <TextView-->
+<!--        android:id="@+id/textViewUserRole"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Admin"-->
+<!--        android:textColor="@android:color/white"-->
+<!--        android:layout_gravity="center_horizontal" />-->
 
 </LinearLayout>

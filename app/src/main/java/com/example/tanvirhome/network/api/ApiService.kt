@@ -5,10 +5,12 @@ import com.example.tanvirhome.model.AboutModel
 import com.example.tanvirhome.model.BannerModel
 import com.example.tanvirhome.model.ContactModel
 import com.example.tanvirhome.model.DataCollectionModel
+import com.example.tanvirhome.model.LocationModel
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface ApiService {
     @POST("contact-me")
@@ -25,4 +27,10 @@ interface ApiService {
 
     @GET("banner")
     fun getBanner(): Call<List<BannerModel>>
+
+    @GET("wards")
+    fun getWard(): Call<List<LocationModel>>
+
+    @GET("get-thanas/{wardId}")
+    fun getThanasByWardId(@Path("wardId") wardId: Int): Call<List<LocationModel>>
 }

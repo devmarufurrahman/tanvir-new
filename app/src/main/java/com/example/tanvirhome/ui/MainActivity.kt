@@ -45,7 +45,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             toolbar = customToolbar
         }
 
-
 //        side navigation view start here ================================================
 
         // Setup Toolbar
@@ -188,8 +187,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun setupInputs() {
         // Set up dropdown inputs
-        setupDropdown(binding.wardNameInput, wardNames)
-        setupDropdown(binding.thanaNameInput, thanaNames)
+//        setupDropdown(binding.thanaNameInput, thanaNames)
+
+        GetData.fetchWards(this, binding.wardNameInput, binding.thanaNameInput)
 
         // Set up date picker for Date of Birth field
         binding.dateOfBirthInput.setOnClickListener {
@@ -197,10 +197,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    private fun setupDropdown(inputView: AutoCompleteTextView, items: Array<String>) {
-        val adapter = ArrayAdapter(this, R.layout.dropdown_item, items)
-        inputView.setAdapter(adapter)
-    }
 
     private fun showDatePickerDialog() {
         val calendar = Calendar.getInstance()
