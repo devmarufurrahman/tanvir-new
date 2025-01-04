@@ -1,11 +1,13 @@
 package com.adaptixinnovate.tanvirahmedrobin.ui
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.adaptixinnovate.tanvirahmedrobin.R
 import com.adaptixinnovate.tanvirahmedrobin.databinding.ActivitySplashScreenBinding
 
@@ -13,8 +15,24 @@ class SplashScreen : AppCompatActivity() {
     private lateinit var binding: ActivitySplashScreenBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Ensure the app follows the system's night mode at the start
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         // Initialize binding
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
+
+        // Check system UI mode and set theme accordingly
+//        when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
+//            Configuration.UI_MODE_NIGHT_YES -> {
+//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES) // Night Mode
+//            }
+//            Configuration.UI_MODE_NIGHT_NO -> {
+//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO) // Light Mode
+//            }
+//            else -> {
+//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM) // Follow system default
+//            }
+//        }
+
         setContentView(binding.root)
 
         // Now use binding to reference your views

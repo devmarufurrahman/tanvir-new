@@ -313,6 +313,7 @@
         android:paddingBottom="96dp"
         android:layout_gravity="start"
         android:visibility="visible"
+        android:background="?attr/navigationDrawerBackground"
         />
 
 </androidx.drawerlayout.widget.DrawerLayout>
