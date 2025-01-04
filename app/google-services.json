@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "707968715634",
+    "project_id": "tanvirahmedrobin-fa7da",
+    "storage_bucket": "tanvirahmedrobin-fa7da.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:707968715634:android:1fcb0dbcdba61e9fddabeb",
+        "android_client_info": {
+          "package_name": "com.adaptixinnovate.tanvirahmedrobin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBV8ly4LV28IC6nn5TTryFWLCr_8bJ27SE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -4,11 +4,11 @@
     <color name="white">#FFFFFFFF</color>
     <!--    <color name="splash_background">#3498db</color>-->
     <!--    <color name="splash_background">#9b59b6</color>-->
-    <color name="splash_background">#34495e</color>
+    <color name="splash_background">#345E3C</color>
     <color name="background_color">#3498db</color>
     <color name="colorPrimary">#2c3e50</color>
     <color name="colorPrimaryDark">#1a252f</color>
-    <color name="colorAccent">#013E7B</color>
+    <color name="colorAccent">#0DAE50</color>
 
     <color name="stroke_color">#E0E0E0</color>
     <color name="primary">#013E7B</color>
@@ -19,5 +19,8 @@
     <color name="text_secondary">#6B7280</color>
     <color name="upload_background">#354760</color>
     <color name="primary_color">#1F2937</color>
+    <color name="start_color">#3AD279</color>
+    <color name="center_color">#B93350</color>
+    <color name="end_color">#B32222</color>
 
 </resources>

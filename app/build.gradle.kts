@@ -1,10 +1,11 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.google.gms.google-services")
 }
 
 android {
-    namespace = "com.example.tanvirhome"
+    namespace = "com.adaptixinnovate.tanvirahmedrobin"
     compileSdk = 35
 
     buildFeatures {
@@ -12,7 +13,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.tanvirhome"
+        applicationId = "com.adaptixinnovate.tanvirahmedrobin"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -57,5 +58,8 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0") // Gson converter for Retrofit
     implementation ("com.squareup.picasso:picasso:2.71828")
 
-
+//    for firebase
+    implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-database-ktx:20.4.0")
 }
