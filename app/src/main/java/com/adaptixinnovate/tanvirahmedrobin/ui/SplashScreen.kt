@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.adaptixinnovate.tanvirahmedrobin.R
 import com.adaptixinnovate.tanvirahmedrobin.databinding.ActivitySplashScreenBinding
+import com.squareup.picasso.Picasso
 
 class SplashScreen : AppCompatActivity() {
     private lateinit var binding: ActivitySplashScreenBinding
@@ -35,6 +36,8 @@ class SplashScreen : AppCompatActivity() {
 
         setContentView(binding.root)
 
+        setupSplash()
+
         // Now use binding to reference your views
         binding.splashImage.startAnimation(
             AnimationUtils.loadAnimation(this, R.anim.fade_in)
@@ -43,11 +46,23 @@ class SplashScreen : AppCompatActivity() {
             AnimationUtils.loadAnimation(this, R.anim.fade_in)
         )
 
+
         // Handler to wait for 2 seconds and then move to MainActivity
         Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this, MainActivity::class.java))
             finish()  // Finish SplashActivity so user cannot go back to it
         }, 2000)  // 2000 milliseconds = 2 seconds
+
+    }
+
+    private fun setupSplash() {
+        Picasso.get()
+            .load("")
+            .placeholder(R.drawable.splash_image)
+            .error(R.drawable.splash_image)
+            .into(binding.splashImage)
+
+        binding.splashText.text = getString(R.string.app_name)
 
     }
 }

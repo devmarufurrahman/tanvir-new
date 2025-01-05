@@ -77,10 +77,10 @@ object SendData {
     }
     
     
-    fun dataCollection(name: String, fatherName: String, motherName: String, nid: String, dateOfBirth: String, address: String, wardName: String, thanaName: String, mobile: String, email: String, context: Context, progressbar: ProgressBar){
+    fun dataCollection(name: String, fatherName: String, motherName: String, nid: String, dateOfBirth: String, address: String, wardName: String, thanaName: String, mobile: String, gender: String, context: Context, progressbar: ProgressBar){
         
         val userDetails = DataCollectionModel(
-            name, fatherName, motherName, nid, dateOfBirth, address, wardName, thanaName, mobile, email
+            name, fatherName, motherName, nid, dateOfBirth, address, wardName, thanaName, mobile, gender
         )
 
         RetrofitClient.instance.postUserData(userDetails).enqueue(object : retrofit2.Callback<DataCollectionModel> {

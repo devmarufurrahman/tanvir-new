@@ -10,10 +10,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.GridLayoutManager
 import com.adaptixinnovate.tanvirahmedrobin.R
+import com.adaptixinnovate.tanvirahmedrobin.adapter.Service
+import com.adaptixinnovate.tanvirahmedrobin.adapter.ServiceAdapter
 import com.adaptixinnovate.tanvirahmedrobin.databinding.ActivityMainBinding
 import com.adaptixinnovate.tanvirahmedrobin.services.FirebaseService
 import com.adaptixinnovate.tanvirahmedrobin.services.GetData
+import com.adaptixinnovate.tanvirahmedrobin.services.HomeService
 import com.adaptixinnovate.tanvirahmedrobin.services.SendData
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.analytics.FirebaseAnalytics
@@ -26,9 +30,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var navigationView: NavigationView
     private lateinit var toolbar: Toolbar
     private lateinit var firebaseAnalytics: FirebaseAnalytics
-    // Data sources
-    private val wardNames = arrayOf("Ward 1", "Ward 2", "Ward 3", "Ward 4", "Ward 5")
-    private val thanaNames = arrayOf("Thana 1", "Thana 2", "Thana 3", "Thana 4", "Thana 5")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +60,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.menu) // menu icon
+        setupRecyclerView()
 
         // Handle the back button using OnBackPressedDispatcher
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
@@ -83,70 +85,28 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 //        Side navigation view end here ================================================
 
-        setupInputs()
-
-        binding.dataSubmitButton.setOnClickListener {
-            val name = binding.nameInput.text.toString().trim()
-            val fatherName = binding.fatherNameInput.text.toString().trim()
-            val motherName = binding.motherNameInput.text.toString().trim()
-            val nid = binding.nidInput.text.toString().trim()
-            val dateOfBirth = binding.dateOfBirthInput.text.toString().trim()
-            val address = binding.addressInput.text.toString().trim()
-            val wardName = binding.wardNameInput.text.toString().trim()
-            val thanaName = binding.thanaNameInput.text.toString().trim()
-            val mobile = binding.mobileInput.text.toString().trim()
-            val email = binding.emailInput.text.toString().trim()
-
-            when {
-                name.isEmpty() -> {
-                    binding.nameInput.error = "Name cannot be empty"
-                    return@setOnClickListener
-                }
-                fatherName.isEmpty() -> {
-                    binding.fatherNameInput.error = "Father's name cannot be empty"
-                    return@setOnClickListener
-                }
-                motherName.isEmpty() -> {
-                    binding.motherNameInput.error = "Mother's name cannot be empty"
-                    return@setOnClickListener
-                }
-                nid.isEmpty() -> {
-                    binding.nidInput.error = "NID cannot be empty"
-                    return@setOnClickListener
-                }
-                dateOfBirth.isEmpty() -> {
-                    binding.dateOfBirthInput.error = "Date of Birth cannot be empty"
-                    return@setOnClickListener
-                }
-                address.isEmpty() -> {
-                    binding.addressInput.error = "Address cannot be empty"
-                    return@setOnClickListener
-                }
-                wardName.isEmpty() -> {
-                    binding.wardNameInput.error = "Ward name cannot be empty"
-                    return@setOnClickListener
-                }
-                thanaName.isEmpty() -> {
-                    binding.thanaNameInput.error = "Thana name cannot be empty"
-                    return@setOnClickListener
-                }
-                mobile.isEmpty() || !mobile.matches("\\d{10}".toRegex()) -> {
-                    binding.mobileInput.error = "Enter a valid 10-digit mobile number"
-                    return@setOnClickListener
-                }
-                email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
-                    binding.emailInput.error = "Enter a valid email address"
-                    return@setOnClickListener
-                }
-                else -> {
-                    SendData.dataCollection(name, fatherName, motherName, nid, dateOfBirth, address, wardName, thanaName, mobile, email, this, binding.progressBar)
-                }
-            }
-        }
-
-
+        setupRecyclerView()
 
     }
+
+
+    private fun setupRecyclerView() {
+        val services = listOf(
+            Service(getString(R.string.data_collection_form), R.drawable.splash_image),
+            Service(getString(R.string.contact_me), R.drawable.ic_contact),
+            Service(getString(R.string.complain_us), R.drawable.ic_complain),
+            Service(getString(R.string.about_me), R.drawable.ic_about),
+            // Add more services here
+        )
+
+        binding.servicesRecyclerView.apply {
+            layoutManager = GridLayoutManager(this@MainActivity, 2)
+            adapter = ServiceAdapter(services) { service ->
+                HomeService.handleServiceClick(service, this@MainActivity)
+            }
+        }
+    }
+
 
     // Handle Navigation Item Clicks
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -198,30 +158,5 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    private fun setupInputs() {
-        // Set up dropdown inputs
-//        setupDropdown(binding.thanaNameInput, thanaNames)
-
-        GetData.fetchWards(this, binding.wardNameInput, binding.thanaNameInput)
-
-        // Set up date picker for Date of Birth field
-        binding.dateOfBirthInput.setOnClickListener {
-            showDatePickerDialog()
-        }
-    }
-
-
-    private fun showDatePickerDialog() {
-        val calendar = Calendar.getInstance()
-        val year = calendar.get(Calendar.YEAR)
-        val month = calendar.get(Calendar.MONTH)
-        val day = calendar.get(Calendar.DAY_OF_MONTH)
-
-        val datePickerDialog = DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
-            binding.dateOfBirthInput.setText("$selectedDay/${selectedMonth + 1}/$selectedYear")
-        }, year, month, day)
-
-        datePickerDialog.show()
-    }
 
 }

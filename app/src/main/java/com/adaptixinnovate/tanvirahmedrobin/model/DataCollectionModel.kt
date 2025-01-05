@@ -10,5 +10,5 @@ data class DataCollectionModel(
     val wardName: String,
     val thanaName: String,
     val mobile: String,
-    val email: String
+    val gender: String
 )

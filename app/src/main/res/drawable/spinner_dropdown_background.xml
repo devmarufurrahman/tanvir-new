@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="@color/white"/>
+            <corners android:radius="8dp"/>
+            <padding android:right="12dp"/>
+        </shape>
+    </item>
+    <item android:gravity="end|center_vertical"
+        android:drawable="@drawable/ic_arrow_drop_down"
+        android:left="5dp"
+        />
+</layer-list>

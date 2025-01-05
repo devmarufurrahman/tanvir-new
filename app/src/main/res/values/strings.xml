@@ -8,8 +8,8 @@
     <string name="home">মূলপাতা</string>
     <string name="contact_me">যোগাযোগ করুন</string>
     <string name="about_us">আমার সম্পর্কে</string>
-    <string name="complain_us">অভিযোগ জানান</string>
-    <string name="data_collection_form">ডাটা সংগ্রহ ফর্ম</string>
+    <string name="complain_us">আপনার অভিযোগ জানান</string>
+    <string name="data_collection_form">তথ্য সংগ্রহ ফর্ম</string>
     <string name="browse_files">ফাইল ব্রাউজ করুন</string>
     <string name="about_me">আমার সম্পর্কে</string>
     <string name="john_doe">জন ডো</string>
@@ -22,7 +22,7 @@
     <string name="drop_your_files_here_or">আপনার ফাইলগুলি এখানে থেকে দিন</string>
     <string name="send_message">বার্তা পাঠান</string>
     <string name="get_in_touch">যোগাযোগ করুন</string>
-    <string name="we_d_love_to_hear_from_you">আমরা আপনার কথা শুনতে চাই</string>
+    <string name="we_d_love_to_hear_from_you">আমি আপনার কথা শুনতে চাই</string>
     <string name="father_name">পিতার নাম</string>
     <string name="mother_name">মাতার নাম</string>
     <string name="nid">জাতীয় পরিচয়পত্র নাম্বার </string>
@@ -30,4 +30,5 @@
     <string name="address">ঠিকানা</string>
     <string name="ward_name">ওয়ার্ডের নাম</string>
     <string name="thana_name">থানার নাম</string>
+    <string name="gender">লিঙ্গ</string>
 </resources>
