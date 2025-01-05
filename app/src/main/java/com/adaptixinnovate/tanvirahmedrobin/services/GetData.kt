@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import android.widget.AutoCompleteTextView
 import android.widget.ImageView
+import android.widget.ImageView.ScaleType
 import android.widget.TextView
 import android.widget.Toast
 import com.adaptixinnovate.tanvirahmedrobin.constants.AppConfig
@@ -12,6 +13,7 @@ import com.adaptixinnovate.tanvirahmedrobin.model.BannerModel
 import com.adaptixinnovate.tanvirahmedrobin.model.LocationModel
 import com.adaptixinnovate.tanvirahmedrobin.network.retrofit.RetrofitClient
 import com.adaptixinnovate.tanvirahmedrobin.utils.SetupDropDown
+import com.denzcoskun.imageslider.models.SlideModel
 import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
@@ -19,30 +21,32 @@ import retrofit2.Response
 
 object GetData {
 
-    fun showBanner(context: Context, textView: TextView, imageView: ImageView) {
+    fun showBanner(context: Context, imageSlider: com.denzcoskun.imageslider.ImageSlider ) {
+
+        val imageList = ArrayList<SlideModel>() // Create image list
 
         RetrofitClient.instance.getBanner().enqueue(object : Callback<List<BannerModel>> {
             override fun onResponse(call: Call<List<BannerModel>>, response: Response<List<BannerModel>>) {
                 if (response.isSuccessful) {
                     val bannerList = response.body() ?: emptyList()
 
-                    // Find the first 'Active' item
-                    val activeBanner = bannerList.find { it.status == "Active" }
+                    // Filter the first 'Active' item
+                    val activeBanner = bannerList.filter { it.status == "Active" }
 
-                    if (activeBanner != null) {
-                        textView.text = activeBanner.title
-                        // Load image from a URL into imageView using Picasso
-                        Picasso.get()
-                            .load(AppConfig.IMG_URL + activeBanner.image)
-//                            .placeholder(R.drawable.banner) // Optional: shown while the image is loading
-//                            .error(R.drawable.error_image) // Optional: shown if there's an error loading the image
-                            .into(imageView)
+                    if (activeBanner.isNotEmpty()) {
+
+                        for (banner in activeBanner) {
+                            imageList.add(SlideModel("${AppConfig.IMG_URL}${banner.image}", banner.title))
+                        }
+
+
                     } else {
                         // Handle the case where no active items are found
                         Toast.makeText(context, "Banner not found.", Toast.LENGTH_SHORT).show()
-                        textView.visibility = View.GONE
-                        imageView.visibility = View.GONE
+
                     }
+                    imageSlider.startSliding(2000)
+                    imageSlider.setImageList(imageList)
                 } else {
                     // Handle API errors here
                     Toast.makeText(context, "Error: server error", Toast.LENGTH_SHORT).show()

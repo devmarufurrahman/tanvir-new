@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.adaptixinnovate.tanvirahmedrobin" />
+                  <option name="mobileSdkAppId" value="1:707968715634:android:1fcb0dbcdba61e9fddabeb" />
+                  <option name="projectId" value="tanvirahmedrobin-fa7da" />
+                  <option name="projectNumber" value="707968715634" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

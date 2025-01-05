@@ -51,12 +51,19 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-//    for circle images
-    implementation (libs.circleimageview)
+//    background task
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
+//    for slider
+    implementation ("com.github.denzcoskun:ImageSlideshow:0.1.2")
+
+//    for images
+    implementation (libs.circleimageview)
+    implementation ("com.squareup.picasso:picasso:2.71828")
+
+//    for api call
     implementation("com.squareup.retrofit2:retrofit:2.9.0") // Retrofit library
     implementation("com.squareup.retrofit2:converter-gson:2.9.0") // Gson converter for Retrofit
-    implementation ("com.squareup.picasso:picasso:2.71828")
 
 //    for firebase
     implementation(platform("com.google.firebase:firebase-bom:33.7.0"))

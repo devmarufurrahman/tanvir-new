@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
 //        setup banner
-        GetData.showBanner(this, binding.banner.imageTitle, binding.banner.mainImage)
+        GetData.showBanner(this, binding.banner.imageSlider)
         // Setup toolbar
         // Initialize Views
         binding.apply {
