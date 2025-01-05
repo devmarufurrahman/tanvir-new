@@ -8,7 +8,6 @@
     tools:openDrawer="start"
     tools:context=".ui.MainActivity">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,8 +20,7 @@
             android:background="@color/white"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            >
+            app:layout_constraintEnd_toEndOf="parent">
 
             <!-- Custom Toolbar -->
             <androidx.appcompat.widget.Toolbar
@@ -34,10 +32,7 @@
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:title="@string/app_name"
                 app:titleTextColor="@color/white"
-                app:titleTextAppearance="@style/Toolbar.TitleText"
-                >
-
-            </androidx.appcompat.widget.Toolbar>
+                app:titleTextAppearance="@style/Toolbar.TitleText" />
 
             <View
                 android:id="@+id/divider"
@@ -45,46 +40,48 @@
                 android:layout_height="1dp"
                 android:layout_below="@+id/custom_toolbar"
                 android:background="@color/splash_background"/>
-
-
         </RelativeLayout>
 
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/nestedScrollView"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:padding="12dp"
+            android:clipToPadding="false"
             app:layout_constraintTop_toBottomOf="@id/home_container"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            >
+            app:layout_constraintEnd_toEndOf="parent">
 
-            <LinearLayout
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/nestedScrollView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:layout_height="wrap_content">
 
-                <include
-                    android:id="@+id/banner"
-                    layout="@layout/layout_image_card"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp" />
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
+                    <include
+                        android:id="@+id/banner"
+                        layout="@layout/layout_image_card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/services_recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    app:spanCount="2"
-                    tools:listitem="@layout/item_service" />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/services_recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:spanCount="2"
+                        tools:listitem="@layout/item_service" />
 
-            </LinearLayout>
-
-        </androidx.core.widget.NestedScrollView>
-
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <!-- ProgressBar centered on the screen -->
         <ProgressBar
@@ -98,7 +95,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
@@ -111,8 +107,6 @@
         android:paddingBottom="96dp"
         android:layout_gravity="start"
         android:visibility="gone"
-        android:background="?attr/navigationDrawerBackground"
-        />
+        android:background="?attr/navigationDrawerBackground" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
-

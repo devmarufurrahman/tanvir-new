@@ -41,6 +41,14 @@ class ContactMe : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            recreate()
+            // Code to refresh the content goes here
+
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
+
+
         // Request permissions for Android 7-10
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             if (FilePickerUtility.requestPermissions(this)) {

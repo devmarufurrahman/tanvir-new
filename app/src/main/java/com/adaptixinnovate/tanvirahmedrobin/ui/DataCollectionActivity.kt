@@ -94,6 +94,14 @@ class DataCollectionActivity : AppCompatActivity() {
             }
         }
 
+
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            recreate()
+            // Code to refresh the content goes here
+
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
+
     }
 
     private fun setupGenderDropdown() {

@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
@@ -53,6 +54,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             navigationView = navMenu
             toolbar = customToolbar
         }
+
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            binding.progressBar.visibility = View.VISIBLE
+            recreate()
+            // Code to refresh the content goes here
+
+            binding.swipeRefreshLayout.isRefreshing = false
+            binding.progressBar.visibility = View.GONE
+        }
+
 
 //        side navigation view start here ================================================
 

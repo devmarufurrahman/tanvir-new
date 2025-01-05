@@ -3,6 +3,7 @@ package com.adaptixinnovate.tanvirahmedrobin.ui
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.adaptixinnovate.tanvirahmedrobin.databinding.ActivityAboutUsBinding
@@ -22,6 +23,15 @@ class AboutUs : AppCompatActivity() {
 
         // Setup the toolbar
         setSupportActionBar(binding.customToolbar)
+
+
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            recreate()
+            // Code to refresh the content goes here
+
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
+
         // Enable the Up button
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         RetrofitClient.instance.getAboutMe().enqueue(object : Callback<List<AboutModel>> {

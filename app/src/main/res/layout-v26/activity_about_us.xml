@@ -43,8 +43,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:padding="24dp"
-                    android:background="@drawable/gradient_background"
-                    >
+                    android:background="@drawable/gradient_background">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="120dp"
@@ -53,13 +52,13 @@
                         android:layout_marginBottom="16dp"
                         android:src="@drawable/main_image"
                         app:civ_border_width="2dp"
-                        app:civ_border_color="@color/white"
-                        />
+                        app:civ_border_color="@color/white"/>
 
                     <TextView
                         android:id="@+id/name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:tooltipText="@string/john_doe"
                         android:gravity="center"
                         android:textColor="@color/white"
                         android:textSize="36sp"
@@ -70,6 +69,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:text="Software Developer"
                         android:gravity="center"
                         android:textColor="@color/white"
                         android:textSize="16sp"/>
@@ -107,6 +107,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:lineSpacingExtra="4dp"
+                        android:text="I'm a passionate software developer with expertise in mobile and web development. I love creating innovative solutions and turning ideas into reality through code. My goal is to deliver high-quality, user-friendly applications that make a difference."
                         android:textColor="@color/black"
                         android:textSize="14sp"/>
                 </LinearLayout>

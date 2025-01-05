@@ -9,6 +9,7 @@ import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.adaptixinnovate.tanvirahmedrobin.R
+import com.adaptixinnovate.tanvirahmedrobin.constants.AppConfig
 import com.adaptixinnovate.tanvirahmedrobin.databinding.ActivitySplashScreenBinding
 import com.squareup.picasso.Picasso
 
@@ -57,7 +58,7 @@ class SplashScreen : AppCompatActivity() {
 
     private fun setupSplash() {
         Picasso.get()
-            .load("")
+            .load("${AppConfig.IMG_URL}")
             .placeholder(R.drawable.splash_image)
             .error(R.drawable.splash_image)
             .into(binding.splashImage)
