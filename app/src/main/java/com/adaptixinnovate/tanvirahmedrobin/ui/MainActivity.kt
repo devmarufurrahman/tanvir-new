@@ -5,7 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -92,13 +95,51 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 //        navigation header listener
         val headerView = binding.navMenu.getHeaderView(0)
-        val userNameTv = headerView.findViewById<TextView>(R.id.textViewUserName)
+
+        binding.footer.copyTv.text = "© 2024 Tanvir Ahmed Robin. All rights reserved."
+        val icons = listOf("facebook", "whatsapp", "youtube")
+        val packageNames = listOf("com.facebook.katana", "com.whatsapp", "com.google.android.youtube")
+        val drawables = listOf(R.drawable.facebook, R.drawable.whatsapp, R.drawable.youtube)
+
+
+        icons.zip(packageNames.zip(drawables)).forEach { (icon, pair) ->
+            val (packageName, drawable) = pair
+            val imageView = createImageView(drawable)
+            binding.footer.frameContainer.addView(imageView)
+            imageView.setOnClickListener { openApp(packageName) }
+        }
 
 //        Side navigation view end here ================================================
 
         setupRecyclerView()
 
     }
+
+
+    private fun createImageView(drawableRes: Int): ImageView {
+        return ImageView(this).apply {
+            layoutParams = FrameLayout.LayoutParams(
+                resources.getDimensionPixelSize(R.dimen.image_size),  // 30dp
+                resources.getDimensionPixelSize(R.dimen.image_size)
+            ).apply {
+                marginEnd = resources.getDimensionPixelSize(R.dimen.image_margin)  // 8dp
+            }
+            setImageResource(drawableRes)
+            isClickable = true
+            isFocusable = true
+        }
+    }
+
+    private fun openApp(packageName: String) {
+        try {
+            val intent = packageManager.getLaunchIntentForPackage(packageName) ?: throw Exception()
+            startActivity(intent)
+        } catch (e: Exception) {
+            // App not installed, maybe open a browser link or show a message
+            Toast.makeText(this, "App not installed", Toast.LENGTH_SHORT).show()
+        }
+    }
+
 
 
     private fun setupRecyclerView() {

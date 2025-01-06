@@ -104,9 +104,24 @@
         android:backgroundTint="@color/white"
         app:menu="@menu/main_menu"
         app:headerLayout="@layout/main_menu_header"
-        android:paddingBottom="96dp"
         android:layout_gravity="start"
-        android:visibility="gone"
-        android:background="?attr/navigationDrawerBackground" />
+        android:visibility="visible"
+        android:background="?attr/navigationDrawerBackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="bottom"
+            >
+
+            <include
+                android:id="@+id/footer"
+                layout="@layout/nav_footer" />
+
+        </LinearLayout>
+
+    </com.google.android.material.navigation.NavigationView>
+
 
 </androidx.drawerlayout.widget.DrawerLayout>
