@@ -4,11 +4,11 @@
         <shape>
             <solid android:color="@color/white"/>
             <corners android:radius="8dp"/>
-            <padding android:right="12dp"/>
+            <padding android:right="1dp"/>
         </shape>
     </item>
     <item android:gravity="end|center_vertical"
         android:drawable="@drawable/ic_arrow_drop_down"
-        android:left="5dp"
+        android:left="15dp"
         />
 </layer-list>

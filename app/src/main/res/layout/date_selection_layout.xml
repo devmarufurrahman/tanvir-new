@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="16dp">
 
         <!-- Date of Birth Header -->
         <TextView
@@ -32,7 +32,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:baselineAligned="false">
+            android:baselineAligned="true"
+            >
 
             <!-- Day Column -->
             <LinearLayout
@@ -40,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:layout_marginEnd="12dp"
+                android:layout_marginEnd="5dp"
                 android:background="@drawable/spinner_background">
 
                 <TextView
@@ -70,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:layout_marginEnd="12dp"
+                android:layout_marginEnd="5dp"
                 android:background="@drawable/spinner_background">
 
                 <TextView
@@ -89,12 +90,14 @@
                     android:layout_height="48dp"
                     android:background="@drawable/spinner_dropdown_background"
                     android:popupBackground="@drawable/spinner_dropdown_background"
+                    android:layout_gravity="center"
                     android:spinnerMode="dropdown"/>
             </LinearLayout>
 
             <!-- Year Column -->
             <LinearLayout
                 android:layout_width="0dp"
+                android:minWidth="300dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical"

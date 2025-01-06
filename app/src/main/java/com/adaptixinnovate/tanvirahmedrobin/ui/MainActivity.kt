@@ -2,6 +2,7 @@ package com.adaptixinnovate.tanvirahmedrobin.ui
 
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -96,17 +97,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 //        navigation header listener
         val headerView = binding.navMenu.getHeaderView(0)
 
-        binding.footer.copyTv.text = "© 2024 Tanvir Ahmed Robin. All rights reserved."
         val icons = listOf("facebook", "whatsapp", "youtube")
-        val packageNames = listOf("com.facebook.katana", "com.whatsapp", "com.google.android.youtube")
+        val urls = listOf(
+            "https://www.facebook.com",
+            "https://www.whatsapp.com",
+            "https://www.youtube.com"
+        )
         val drawables = listOf(R.drawable.facebook, R.drawable.whatsapp, R.drawable.youtube)
 
 
-        icons.zip(packageNames.zip(drawables)).forEach { (icon, pair) ->
-            val (packageName, drawable) = pair
+
+        icons.zip(urls.zip(drawables)).forEach { (icon, pair) ->
+            val (url, drawable) = pair
             val imageView = createImageView(drawable)
             binding.footer.frameContainer.addView(imageView)
-            imageView.setOnClickListener { openApp(packageName) }
+            imageView.setOnClickListener { openUrl(url) }
         }
 
 //        Side navigation view end here ================================================
@@ -119,10 +124,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun createImageView(drawableRes: Int): ImageView {
         return ImageView(this).apply {
             layoutParams = FrameLayout.LayoutParams(
-                resources.getDimensionPixelSize(R.dimen.image_size),  // 30dp
+                resources.getDimensionPixelSize(R.dimen.image_size),
                 resources.getDimensionPixelSize(R.dimen.image_size)
             ).apply {
-                marginEnd = resources.getDimensionPixelSize(R.dimen.image_margin)  // 8dp
+                marginEnd = resources.getDimensionPixelSize(R.dimen.image_margin)
             }
             setImageResource(drawableRes)
             isClickable = true
@@ -130,14 +135,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    private fun openApp(packageName: String) {
-        try {
-            val intent = packageManager.getLaunchIntentForPackage(packageName) ?: throw Exception()
-            startActivity(intent)
-        } catch (e: Exception) {
-            // App not installed, maybe open a browser link or show a message
-            Toast.makeText(this, "App not installed", Toast.LENGTH_SHORT).show()
-        }
+    private fun openUrl(url: String) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(intent)
     }
 
 
