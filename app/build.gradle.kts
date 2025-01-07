@@ -65,6 +65,7 @@ dependencies {
 //    for api call
     implementation("com.squareup.retrofit2:retrofit:2.9.0") // Retrofit library
     implementation("com.squareup.retrofit2:converter-gson:2.9.0") // Gson converter for Retrofit
+    implementation("com.squareup.okhttp3:okhttp:4.10.0") // ok http client
 
 //    for firebase
     implementation(platform("com.google.firebase:firebase-bom:33.7.0"))

@@ -60,15 +60,6 @@
                 android:orientation="vertical"
                 android:padding="16dp"
                 >
-                <!-- ProgressBar centered on the screen -->
-                <ProgressBar
-                    android:id="@+id/progressBar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:indeterminateTint="@color/accent"
-                    android:layout_centerInParent="true"
-                    />
 
                     <ScrollView
                         android:id="@+id/fromMain"
@@ -263,6 +254,16 @@
                         android:layout_marginVertical="5dp"
                         android:layout_below="@+id/fromMain"
                         />
+
+                <!-- ProgressBar centered on the screen -->
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:indeterminateTint="@color/accent"
+                    android:layout_centerInParent="true"
+                    />
 
             </RelativeLayout>
 

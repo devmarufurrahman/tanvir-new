@@ -62,52 +62,54 @@ object GetData {
 
     }
 
-   fun fetchWards(context: Context, wardView: AutoCompleteTextView, thanaView: AutoCompleteTextView) {
-        RetrofitClient.instance.getWard().enqueue(object : retrofit2.Callback<List<LocationModel>> {
-            override fun onResponse(call: retrofit2.Call<List<LocationModel>>, response: retrofit2.Response<List<LocationModel>>) {
-                if (response.isSuccessful) {
-                    val wardsList = response.body() ?: emptyList()
-                    val dropDown = SetupDropDown()
-                    dropDown.setupDropdown(wardView, wardsList, context) { wardId ->
-                        // Handle the selected ward ID here
-                        println("Selected Ward ID: $wardId")
-                        loadThanas(wardId, context, thanaView)
-                    }
-
-                } else {
-                    println(response)
-                    Toast.makeText(context, "Failed to retrieve data", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun onFailure(call: retrofit2.Call<List<LocationModel>>, t: Throwable) {
-                println("Error: ${t.message}")
-                Toast.makeText(context, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
-
-    fun loadThanas(wardId: Int, context: Context, inputView: AutoCompleteTextView) {
-        RetrofitClient.instance.getThanasByWardId(wardId).enqueue(object : Callback<List<LocationModel>> {
-            override fun onResponse(call: Call<List<LocationModel>>, response: Response<List<LocationModel>>) {
-                if (response.isSuccessful) {
-                    val thanaList = response.body() ?: emptyList()
-                    val dropDown = SetupDropDown()
-                    dropDown.setupDropdown(inputView, thanaList, context) { thanaId ->
-                        // Handle the selected ward ID here
-                        println("Selected Thana ID: $thanaId")
-                    }
-
-                } else {
-                    Toast.makeText(context, "Failed to retrieve data", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun onFailure(call: Call<List<LocationModel>>, t: Throwable) {
-                Toast.makeText(context, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
+//   fun fetchWards(context: Context, wardView: AutoCompleteTextView, thanaView: AutoCompleteTextView) {
+//        RetrofitClient.instance.getWard().enqueue(object : retrofit2.Callback<List<LocationModel>> {
+//            override fun onResponse(call: retrofit2.Call<List<LocationModel>>, response: retrofit2.Response<List<LocationModel>>) {
+//                if (response.isSuccessful) {
+//                    val wardsList = response.body() ?: emptyList()
+//                    val dropDown = SetupDropDown()
+//
+//                    dropDown.setupDropdown(wardView, wardsList, context) { wardId ->
+//                        // Handle the selected ward ID here
+//                        println("Selected Ward ID: $wardId")
+//                        context.selectedWardId = wardId
+//                        loadThanas(wardId, context, thanaView)
+//                    }
+//
+//                } else {
+//                    println(response)
+//                    Toast.makeText(context, "Failed to retrieve data", Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//
+//            override fun onFailure(call: retrofit2.Call<List<LocationModel>>, t: Throwable) {
+//                println("Error: ${t.message}")
+//                Toast.makeText(context, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+//            }
+//        })
+//   }
+//
+//    fun loadThanas(wardId: Int, context: Context, inputView: AutoCompleteTextView) {
+//        RetrofitClient.instance.getThanasByWardId(wardId).enqueue(object : Callback<List<LocationModel>> {
+//            override fun onResponse(call: Call<List<LocationModel>>, response: Response<List<LocationModel>>) {
+//                if (response.isSuccessful) {
+//                    val thanaList = response.body() ?: emptyList()
+//                    val dropDown = SetupDropDown()
+//                    dropDown.setupDropdown(inputView, thanaList, context) { thanaId ->
+//                        // Handle the selected ward ID here
+//                        println("Selected Thana ID: $thanaId")
+//                    }
+//
+//                } else {
+//                    Toast.makeText(context, "Failed to retrieve data", Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<List<LocationModel>>, t: Throwable) {
+//                Toast.makeText(context, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+//            }
+//        })
+//    }
 
 
 }

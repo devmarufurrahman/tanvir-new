@@ -14,7 +14,7 @@ class SetupDropDown {
         inputView.setAdapter(adapter)
 
         inputView.setOnItemClickListener { adapterView, view, position, id ->
-
+            inputView.error = null
             val selectedId = items[position].id
             onItemSelected(selectedId)
         }

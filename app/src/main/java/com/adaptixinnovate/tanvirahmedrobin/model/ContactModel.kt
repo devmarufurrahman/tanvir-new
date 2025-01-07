@@ -6,5 +6,5 @@ data class ContactModel(
     val name: String,
     val phone: String,
     val message: String,
-    val uri: Uri? = null
+    val file: Uri? = null
 )
