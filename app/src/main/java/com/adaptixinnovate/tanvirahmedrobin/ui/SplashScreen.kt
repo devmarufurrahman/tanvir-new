@@ -14,6 +14,8 @@ import com.adaptixinnovate.tanvirahmedrobin.R
 import com.adaptixinnovate.tanvirahmedrobin.constants.AppConfig
 import com.adaptixinnovate.tanvirahmedrobin.databinding.ActivitySplashScreenBinding
 import com.adaptixinnovate.tanvirahmedrobin.services.FirebaseService
+import com.adaptixinnovate.tanvirahmedrobin.services.GetData
+import com.adaptixinnovate.tanvirahmedrobin.services.SharedPrefereneService
 import com.adaptixinnovate.tanvirahmedrobin.services.SharedPrefereneService.getFromPreferences
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
@@ -87,6 +89,7 @@ class SplashScreen : AppCompatActivity() {
                     AppConfig.setUrl(baseUrl)
                     proceedToNextActivity()
                     setupSplash()
+                    GetData.fetchSiteInfo(this@SplashScreen)
                 } else{
                     recreate()
                 }
@@ -98,13 +101,17 @@ class SplashScreen : AppCompatActivity() {
     }
 
     private fun setupSplash() {
+        val settings = SharedPrefereneService.getSettingsFromPreferences(this)
+
+        Log.d("settings_log", "setupSplash: $settings")
+
         Picasso.get()
-            .load("${AppConfig.IMG_URL}")
+            .load("${AppConfig.IMG_URL}uploads/${settings.logo}")
             .placeholder(R.drawable.splash_image)
             .error(R.drawable.splash_image)
             .into(binding.splashImage)
 
-        binding.splashText.text = getString(R.string.app_name)
+        binding.splashText.text = resources.getString(R.string.app_name, settings.name)
 
     }
 }

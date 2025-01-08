@@ -16,6 +16,7 @@ import com.adaptixinnovate.tanvirahmedrobin.databinding.ActivityDataCollectionBi
 import com.adaptixinnovate.tanvirahmedrobin.model.LocationModel
 import com.adaptixinnovate.tanvirahmedrobin.network.retrofit.RetrofitClient
 import com.adaptixinnovate.tanvirahmedrobin.services.SendData
+import com.adaptixinnovate.tanvirahmedrobin.services.SharedPrefereneService
 import com.adaptixinnovate.tanvirahmedrobin.utils.SetupDropDown
 import retrofit2.Call
 import retrofit2.Callback
@@ -38,6 +39,8 @@ class DataCollectionActivity : AppCompatActivity() {
         setupDate()
         // Setup the toolbar
         setSupportActionBar(binding.customToolbar)
+        val settings = SharedPrefereneService.getSettingsFromPreferences(this)
+        binding.customToolbar.title = resources.getString(R.string.app_name, settings.name)
         // Enable the Up button
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -49,6 +52,7 @@ class DataCollectionActivity : AppCompatActivity() {
             val address = binding.addressInput.text.toString().trim()
             val mobile = binding.mobileInput.text.toString().trim()
             val gender = binding.genderNameInput.text.toString().trim()
+            dateOfBirth = getSelectedDate().toString()
 
             when {
                 name.isEmpty() -> {
@@ -67,11 +71,9 @@ class DataCollectionActivity : AppCompatActivity() {
                     binding.nidInput.error = "NID cannot be empty"
                     return@setOnClickListener
                 }
-                dateOfBirth.isEmpty() -> {
-                    dateOfBirth = getSelectedDate().toString()
-                    Toast.makeText(this, "Date of Birth cannot be empty", Toast.LENGTH_SHORT).show()
-                    return@setOnClickListener
-                }
+//                dateOfBirth.isEmpty() -> {
+//                    return@setOnClickListener
+//                }
                 address.isEmpty() -> {
                     binding.addressInput.error = "Address cannot be empty"
                     return@setOnClickListener

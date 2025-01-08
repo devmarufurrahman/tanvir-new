@@ -25,8 +25,11 @@ import com.adaptixinnovate.tanvirahmedrobin.services.FirebaseService
 import com.adaptixinnovate.tanvirahmedrobin.services.GetData
 import com.adaptixinnovate.tanvirahmedrobin.services.HomeService
 import com.adaptixinnovate.tanvirahmedrobin.services.SendData
+import com.adaptixinnovate.tanvirahmedrobin.services.SharedPrefereneService
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.squareup.picasso.Picasso
+import de.hdodenhof.circleimageview.CircleImageView
 import java.util.Calendar
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -53,6 +56,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 //        setup banner
         GetData.showBanner(this, binding.banner.imageSlider)
         // Setup toolbar
+        val settings = SharedPrefereneService.getSettingsFromPreferences(this)
+        binding.customToolbar.title = resources.getString(R.string.app_name, settings.name)
         // Initialize Views
         binding.apply {
             drawerLayoutVar = drawerLayout
@@ -97,14 +102,34 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 //        navigation header listener
         val headerView = binding.navMenu.getHeaderView(0)
+        val headerName = headerView.findViewById<TextView>(R.id.textViewUserName)
+        val headerEmail = headerView.findViewById<TextView>(R.id.textViewUserEmail)
+        val headerPhone = headerView.findViewById<TextView>(R.id.textViewUserPhone)
+        val headerImage = headerView.findViewById<CircleImageView>(R.id.imageViewProfile)
 
-        val icons = listOf("facebook", "whatsapp", "youtube")
+        Picasso.get()
+            .load("${AppConfig.IMG_URL}uploads/${settings.logo}")
+            .placeholder(R.drawable.splash_image)
+            .error(R.drawable.splash_image)
+            .into(headerImage)
+
+
+        headerName.text = settings.name
+        headerEmail.text = settings.email
+        headerPhone.text = settings.phone
+
+
+        val icons = listOf("facebook", "linkedin", "youtube")
         val urls = listOf(
-            "https://www.facebook.com",
-            "https://www.whatsapp.com",
-            "https://www.youtube.com"
+            settings.facebook,
+            settings.linkedin,
+            settings.youtube
         )
-        val drawables = listOf(R.drawable.facebook, R.drawable.whatsapp, R.drawable.youtube)
+        val drawables = listOf(R.drawable.facebook, R.drawable.linkedin, R.drawable.youtube)
+
+        binding.footer.fbLink.setOnClickListener {
+            openUrl("https://www.facebook.com/ssnazmusshakib")
+        }
 
 
 

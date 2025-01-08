@@ -149,8 +149,8 @@ class ComplainUs : AppCompatActivity() {
                     binding.progressBar.visibility = View.GONE
                     if (response.isSuccessful) {
                         Toast.makeText(this@ComplainUs, "Upload successful!", Toast.LENGTH_SHORT).show()
-//                        startActivity(Intent(this@ComplainUs, CongratulationsActivity::class.java))
-//                        finish()
+                        startActivity(Intent(this@ComplainUs, CongratulationsActivity::class.java))
+                        finish()
                     } else {
                         Toast.makeText(this@ComplainUs, "Upload failed: ${response.errorBody()?.string()}", Toast.LENGTH_SHORT).show()
                     }

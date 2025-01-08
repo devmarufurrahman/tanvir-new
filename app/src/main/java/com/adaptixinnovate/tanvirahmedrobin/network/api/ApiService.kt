@@ -6,6 +6,7 @@ import com.adaptixinnovate.tanvirahmedrobin.model.BannerModel
 import com.adaptixinnovate.tanvirahmedrobin.model.ContactModel
 import com.adaptixinnovate.tanvirahmedrobin.model.DataCollectionModel
 import com.adaptixinnovate.tanvirahmedrobin.model.LocationModel
+import com.adaptixinnovate.tanvirahmedrobin.model.SiteInfo
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
@@ -52,4 +53,7 @@ interface ApiService {
 
     @GET("get-thanas/{wardId}")
     fun getThanasByWardId(@Path("wardId") wardId: Int): Call<List<LocationModel>>
+
+    @GET("settings")
+    fun getSettings(): Call<List<SiteInfo>>
 }

@@ -1,5 +1,7 @@
 package com.adaptixinnovate.tanvirahmedrobin.constants
 
+import com.adaptixinnovate.tanvirahmedrobin.services.SharedPrefereneService
+
 object AppConfig {
 
     lateinit var BASE_URL : String

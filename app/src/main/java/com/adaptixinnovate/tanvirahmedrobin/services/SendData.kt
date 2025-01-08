@@ -28,6 +28,8 @@ object SendData {
             name, fatherName, motherName, nid, dateOfBirth, mobile, gender, address, wardName, thanaName
         )
 
+        Log.d("data collection", "dataCollection: $userDetails")
+
         RetrofitClient.instance.postUserData(userDetails).enqueue(object : retrofit2.Callback<DataCollectionModel> {
             override fun onResponse(
                 call: retrofit2.Call<DataCollectionModel>,
@@ -40,7 +42,7 @@ object SendData {
                     (context as? Activity)?.finish()
                 } else {
                     progressbar.visibility = View.GONE
-                    Toast.makeText(context, "Error: ${response.message()}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Error database: ${response.message()}", Toast.LENGTH_SHORT).show()
                 }
             }
 

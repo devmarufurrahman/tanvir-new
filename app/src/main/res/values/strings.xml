@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">তানভির আহমেদ রবিন</string>
+    <string name="app_name2">তানভির আহমেদ রবিন</string>
+    <string name="app_name"> %s </string>
     <string name="main_image_description">প্রধান ছবি</string>
     <string name="name_hint">নাম</string>
     <string name="mobile_hint">মোবাইল নম্বর</string>
@@ -31,7 +32,7 @@
     <string name="ward_name">ওয়ার্ডের নাম</string>
     <string name="thana_name">থানার নাম</string>
     <string name="gender">লিঙ্গ</string>
-    <string name="congratulations">Congratulations! 🎉</string>
-    <string name="your_submission_has_been_successfully_received">Your submission has been successfully received</string>
-    <string name="thank_you_for_your_submission">Thank you for your submission</string>
+    <string name="congratulations">অভিনন্দন! 🎉</string>
+    <string name="your_submission_has_been_successfully_received">আপনার জমা দেওয়া সফলভাবে গৃহীত হয়েছে</string>
+    <string name="thank_you_for_your_submission">আপনার জমা দেওয়ার জন্য আপনাকে ধন্যবাদ</string>
 </resources>

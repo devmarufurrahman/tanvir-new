@@ -1,51 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="180dp"
-    android:background="@color/colorAccent"
+    android:layout_height="200dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/gradient_background"
     android:orientation="vertical"
     android:padding="16dp"
     android:gravity="bottom">
 
     <!-- Profile Image -->
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageViewProfile"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:src="@drawable/main_image"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
         android:layout_gravity="center_horizontal"
-        android:contentDescription="Abbas"
-        android:scaleType="centerCrop"
-        android:background="@drawable/bg_border_dark_radius_10" />
+        app:civ_border_width="2dp"
+        app:civ_border_color="#00DF0B"/>
+
 
     <!-- User Name -->
     <TextView
         android:id="@+id/textViewUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:layout_marginTop="8dp"
         android:layout_gravity="center_horizontal" />
 
     <!-- Email or Additional Information -->
-<!--    <TextView-->
-<!--        android:id="@+id/textViewUserEmail"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="demo@gmail.com"-->
-<!--        android:textColor="@android:color/white"-->
-<!--        android:layout_gravity="center_horizontal" />-->
+    <TextView
+        android:id="@+id/textViewUserEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@android:color/white"
+        android:layout_gravity="center_horizontal" />
 
 
-<!--    &lt;!&ndash; Email or Additional Information &ndash;&gt;-->
-<!--    <TextView-->
-<!--        android:id="@+id/textViewUserRole"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Admin"-->
-<!--        android:textColor="@android:color/white"-->
-<!--        android:layout_gravity="center_horizontal" />-->
+    <!-- Email or Additional Information -->
+    <TextView
+        android:id="@+id/textViewUserPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@android:color/white"
+        android:layout_gravity="center_horizontal" />
 
 </LinearLayout>
