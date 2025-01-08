@@ -5,13 +5,20 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.adaptixinnovate.tanvirahmedrobin.R
 import com.adaptixinnovate.tanvirahmedrobin.constants.AppConfig
 import com.adaptixinnovate.tanvirahmedrobin.databinding.ActivitySplashScreenBinding
+import com.adaptixinnovate.tanvirahmedrobin.services.FirebaseService
+import com.adaptixinnovate.tanvirahmedrobin.services.SharedPrefereneService.getFromPreferences
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class SplashScreen : AppCompatActivity() {
     private lateinit var binding: ActivitySplashScreenBinding
@@ -37,7 +44,8 @@ class SplashScreen : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        setupSplash()
+        FirebaseService.base_url(this)
+
 
         // Now use binding to reference your views
         binding.splashImage.startAnimation(
@@ -48,12 +56,43 @@ class SplashScreen : AppCompatActivity() {
         )
 
 
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        retrieveBaseUrl()
+    }
+
+
+    private fun proceedToNextActivity() {
         // Handler to wait for 2 seconds and then move to MainActivity
         Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this, MainActivity::class.java))
             finish()  // Finish SplashActivity so user cannot go back to it
         }, 2000)  // 2000 milliseconds = 2 seconds
+    }
 
+
+    private fun retrieveBaseUrl() {
+        CoroutineScope(Dispatchers.Main).launch {
+            try {
+                // Call the suspend function to get BaseUrl
+                val baseUrl = getFromPreferences(
+                    context = this@SplashScreen,
+                    key = "BaseUrl",
+                    defaultValue = ""
+                )
+                if (baseUrl.isNotEmpty()){
+                    AppConfig.setUrl(baseUrl)
+                    proceedToNextActivity()
+                    setupSplash()
+                }
+
+            } catch (e: Exception) {
+                Log.e("BaseUrl", "Error retrieving Base URL: ${e.message}")
+            }
+        }
     }
 
     private fun setupSplash() {

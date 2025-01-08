@@ -1,6 +1,14 @@
 package com.adaptixinnovate.tanvirahmedrobin.constants
 
 object AppConfig {
-    const val BASE_URL = "https://tanvir-ahmed.shetab.tech/api/"
-    const val IMG_URL = "https://tanvir-ahmed.shetab.tech/"
+
+    lateinit var BASE_URL : String
+    lateinit var IMG_URL : String
+
+
+    fun setUrl(url: String) {
+        BASE_URL = "${url}api/"
+        IMG_URL = url
+
+    }
 }

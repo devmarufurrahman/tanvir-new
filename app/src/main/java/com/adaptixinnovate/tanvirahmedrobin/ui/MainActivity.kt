@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.adaptixinnovate.tanvirahmedrobin.R
 import com.adaptixinnovate.tanvirahmedrobin.adapter.Service
 import com.adaptixinnovate.tanvirahmedrobin.adapter.ServiceAdapter
+import com.adaptixinnovate.tanvirahmedrobin.constants.AppConfig
 import com.adaptixinnovate.tanvirahmedrobin.databinding.ActivityMainBinding
 import com.adaptixinnovate.tanvirahmedrobin.services.FirebaseService
 import com.adaptixinnovate.tanvirahmedrobin.services.GetData
