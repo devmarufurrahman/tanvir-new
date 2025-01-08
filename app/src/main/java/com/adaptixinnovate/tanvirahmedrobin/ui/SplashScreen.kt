@@ -44,7 +44,7 @@ class SplashScreen : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        FirebaseService.base_url(this)
+        FirebaseService.base_url_firebase(this)
 
 
         // Now use binding to reference your views
@@ -87,6 +87,8 @@ class SplashScreen : AppCompatActivity() {
                     AppConfig.setUrl(baseUrl)
                     proceedToNextActivity()
                     setupSplash()
+                } else{
+                    recreate()
                 }
 
             } catch (e: Exception) {

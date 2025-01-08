@@ -31,7 +31,7 @@ object FirebaseService {
         })
     }
 
-    fun base_url(context: Context) {
+    fun base_url_firebase(context: Context) {
         // Access Firebase Database reference
         baseUrl.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
