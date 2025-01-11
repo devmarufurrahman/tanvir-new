@@ -107,7 +107,7 @@ class SplashScreen : AppCompatActivity() {
 
         Picasso.get()
             .load("${AppConfig.IMG_URL}uploads/${settings.logo}")
-            .placeholder(R.drawable.splash_image)
+//            .placeholder(R.drawable.splash_image)
             .error(R.drawable.splash_image)
             .into(binding.splashImage)
 
