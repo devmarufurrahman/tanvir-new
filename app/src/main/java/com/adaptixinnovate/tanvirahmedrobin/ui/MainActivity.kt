@@ -174,6 +174,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             Service(getString(R.string.about_me), R.drawable.ic_about),
             Service(getString(R.string.contact_me), R.drawable.ic_contact),
             Service(getString(R.string.complain_us), R.drawable.ic_complain),
+            Service(getString(R.string.extortion), R.drawable.extortion),
             // Add more services here
         )
 

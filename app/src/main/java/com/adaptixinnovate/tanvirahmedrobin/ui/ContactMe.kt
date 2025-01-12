@@ -1,5 +1,6 @@
 package com.adaptixinnovate.tanvirahmedrobin.ui
 
+import android.content.ActivityNotFoundException
 import android.content.ContentResolver
 import android.content.Intent
 import android.net.Uri
@@ -16,6 +17,7 @@ import com.adaptixinnovate.tanvirahmedrobin.databinding.ActivityContactMeBinding
 import com.adaptixinnovate.tanvirahmedrobin.network.retrofit.RetrofitClient
 import com.adaptixinnovate.tanvirahmedrobin.utils.FilePickerUtility
 import com.adaptixinnovate.tanvirahmedrobin.services.SendData
+import com.adaptixinnovate.tanvirahmedrobin.services.SharedPrefereneService
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -26,22 +28,10 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
 import java.io.FileOutputStream
+import java.util.Objects
 
 class ContactMe : AppCompatActivity() {
     private lateinit var binding: ActivityContactMeBinding
-    private var fileUri: Uri? = null
-
-    // File picker launcher
-    private val imagePickerLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        uri?.let {
-            fileUri = it
-//            handleImageUri(it)
-        }
-    }
-
-    fun openImagePicker() {
-        imagePickerLauncher.launch("image/*")
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,106 +40,65 @@ class ContactMe : AppCompatActivity() {
 
         setSupportActionBar(binding.customToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        val settings = SharedPrefereneService.getSettingsFromPreferences(this)
 
         binding.swipeRefreshLayout.setOnRefreshListener {
             recreate()
             binding.swipeRefreshLayout.isRefreshing = false
         }
+        if (settings.email.isEmpty()) binding.emailLayout.visibility = View.GONE else binding.contactEmail.text = settings.email
+        if (settings.phone.isEmpty()) binding.phoneLayout.visibility = View.GONE else binding.contactPhone.text = settings.phone
+        if (settings.address.isEmpty()) binding.addressLayout.visibility = View.GONE else binding.address.text = settings.address
 
-        binding.browseFileButton.setOnClickListener {
-            openImagePicker()
+        binding.contactEmail.setOnClickListener {
+            val intent = Intent(Intent.ACTION_SENDTO)
+            intent.data = Uri.parse("mailto:${binding.contactEmail.text}")
+            startActivity(intent)
         }
 
-        binding.sendMessageButton.setOnClickListener {
-            val name = binding.nameEditText.text.toString()
-            val phone = binding.phoneEditText.text.toString()
-            val message = binding.messageEditText.text.toString()
+        binding.contactPhone.setOnClickListener {
+            val intent = Intent(Intent.ACTION_DIAL)
+            intent.data = Uri.parse("tel:${binding.contactPhone.text}")
+            startActivity(intent)
+        }
 
-            if (validateInputs(name, phone, message)) {
-                binding.progressBar.visibility = View.VISIBLE
-                fileUri?.let {
-                    val file = uriToFile(it)
-                    uploadImageFile(name, phone, message, file)
-                } ?: run {
-                    Toast.makeText(this, "Please select an image.", Toast.LENGTH_SHORT).show()
-                }
+        binding.facebookButton.setOnClickListener {
+            openUrl(settings.facebook)
+        }
+
+        binding.linkedinButton.setOnClickListener {
+            openUrl(settings.linkedin)
+        }
+
+        binding.youtubeButton.setOnClickListener {
+            openUrl(settings.youtube)
+        }
+
+        binding.whatsappButton.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW).apply {
+                data = Uri.parse("https://wa.me/${settings.phone}")
+                setPackage("com.whatsapp")
             }
-        }
-    }
-
-
-
-    private fun validateInputs(name: String, phone: String, message: String): Boolean {
-        if (name.isEmpty()) {
-            binding.nameEditText.error = "Name cannot be empty"
-            return false
-        }
-        if (phone.isEmpty() || !phone.matches("\\d{11}".toRegex())) {
-            binding.phoneEditText.error = "Enter a valid 11-digit phone number"
-            return false
-        }
-        if (message.isEmpty()) {
-            binding.messageEditText.error = "Message cannot be empty"
-            return false
-        }
-        return true
-    }
-
-    private fun uriToFile(uri: Uri): File {
-        val contentResolver: ContentResolver = applicationContext.contentResolver
-
-
-        // Extract the original file name
-        val fileName = contentResolver.query(uri, null, null, null, null)?.use { cursor ->
-            val nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
-            cursor.moveToFirst()
-            cursor.getString(nameIndex)
-        } ?: "default_image.jpg" // Default name if no name is found
-
-        val inputStream = contentResolver.openInputStream(uri)
-        val file = File(applicationContext.cacheDir, fileName)
-        val outputStream = FileOutputStream(file)
-
-        // Show a Toast with the file name
-        Toast.makeText(this, "Selected File: $fileName", Toast.LENGTH_SHORT).show()
-        binding.fileName.text = "Selected File: $fileName"
-
-        inputStream?.use { input ->
-            outputStream.use { output ->
-                input.copyTo(output)
+            try {
+                startActivity(intent)
+            } catch (e: ActivityNotFoundException) {
+                Toast.makeText(this, "WhatsApp is not installed on this device", Toast.LENGTH_SHORT).show()
             }
         }
 
+        binding.instagramButton.setOnClickListener {
+            openUrl(settings.instagram)
+        }
 
-        return file
+        binding.webButton.setOnClickListener {
+            openUrl(settings.website)
+        }
+
     }
 
-    private fun uploadImageFile(name: String, phone: String, message: String, imageFile: File) {
-        val namePart = RequestBody.create("text/plain".toMediaTypeOrNull(), name)
-        val phonePart = RequestBody.create("text/plain".toMediaTypeOrNull(), phone)
-        val messagePart = RequestBody.create("text/plain".toMediaTypeOrNull(), message)
-
-        val imageRequestBody = RequestBody.create("image/*".toMediaTypeOrNull(), imageFile)
-        val imagePart = MultipartBody.Part.createFormData("file", imageFile.name, imageRequestBody)
-
-        RetrofitClient.instance.contactMessage(namePart, phonePart, messagePart, imagePart)
-            .enqueue(object : Callback<ResponseBody> {
-                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                    binding.progressBar.visibility = View.GONE
-                    if (response.isSuccessful) {
-                        Toast.makeText(this@ContactMe, "Upload successful!", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this@ContactMe, CongratulationsActivity::class.java))
-                        finish()
-                    } else {
-                        Toast.makeText(this@ContactMe, "Upload failed: ${response.errorBody()?.string()}", Toast.LENGTH_SHORT).show()
-                    }
-                }
-
-                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                    binding.progressBar.visibility = View.GONE
-                    Toast.makeText(this@ContactMe, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
-                }
-            })
+    private fun openUrl(url: String) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(intent)
     }
 
     override fun onSupportNavigateUp(): Boolean {

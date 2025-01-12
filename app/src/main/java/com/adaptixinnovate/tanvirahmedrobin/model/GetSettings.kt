@@ -9,5 +9,7 @@ data class GetSettings(
     val youtube: String,
     val copyright: String,
     val email: String,
-    val phone: String
+    val phone: String,
+    val instagram: String,
+    val website: String
 )

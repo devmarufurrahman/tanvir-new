@@ -81,11 +81,12 @@ object GetData {
                                     info.youtube ?: "",
                                     info.footer_text ?: "",
                                     info.email ?: "",
-                                    info.phone ?: ""
+                                    info.phone ?: "",
+                                    info.instagram ?: "",
+                                    info.website ?: ""
                                 )
                             }
                             Log.d("SiteInfo", "Site : $info")
-                            Log.d("SiteInfo", "Facebook: ${info.facebook}")
                         }
                     }
                 } else {
@@ -94,7 +95,7 @@ object GetData {
             }
 
             override fun onFailure(call: Call<List<SiteInfo>>, t: Throwable) {
-                Toast.makeText(context, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Error settings: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }

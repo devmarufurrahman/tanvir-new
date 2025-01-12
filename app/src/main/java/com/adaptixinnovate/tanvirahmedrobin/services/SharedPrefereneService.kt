@@ -27,7 +27,7 @@ object SharedPrefereneService {
     }
 
 
-    fun saveSettingsToPreferences(context: Context, name: String, logo: String, address: String, facebook: String, linkedin: String, youtube: String, copyright: String, email: String, phone: String ) {
+    fun saveSettingsToPreferences(context: Context, name: String, logo: String, address: String, facebook: String, linkedin: String, youtube: String, copyright: String, email: String, phone: String, instagram: String, website: String ) {
         val sharedPreferences = context.getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putString("name", name)
@@ -39,6 +39,8 @@ object SharedPrefereneService {
         editor.putString("copyright", copyright)
         editor.putString("email", email)
         editor.putString("phone", phone)
+        editor.putString("instagram", instagram)
+        editor.putString("website", website)
         editor.apply() // Asynchronous save
     }
 
@@ -55,6 +57,8 @@ object SharedPrefereneService {
         val copyright = sharedPreferences.getString("copyright", "") ?: ""
         val email = sharedPreferences.getString("email", "") ?: ""
         val phone = sharedPreferences.getString("phone", "") ?: ""
+        val instagram = sharedPreferences.getString("instagram", "") ?: ""
+        val website = sharedPreferences.getString("website", "") ?: ""
 
         return GetSettings(
             name = name,
@@ -65,7 +69,9 @@ object SharedPrefereneService {
             youtube = youtube,
             copyright = copyright,
             email = email,
-            phone = phone
+            phone = phone,
+            instagram = instagram,
+            website = website,
         )
 
     }

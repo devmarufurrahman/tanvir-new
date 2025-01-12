@@ -19,6 +19,7 @@ data class SiteInfo(
     val youtube: String?,
     val linkedin: String?,
     val pinterest: String?,
+    val website: String?,
     val meta_title: String?,
     val meta_description: String?,
     val meta_keywords: String?,

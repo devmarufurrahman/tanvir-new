@@ -6,9 +6,13 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.adaptixinnovate.tanvirahmedrobin.R
+import com.adaptixinnovate.tanvirahmedrobin.constants.AppConfig
 import com.adaptixinnovate.tanvirahmedrobin.databinding.ActivityAboutUsBinding
 import com.adaptixinnovate.tanvirahmedrobin.model.AboutModel
 import com.adaptixinnovate.tanvirahmedrobin.network.retrofit.RetrofitClient
+import com.adaptixinnovate.tanvirahmedrobin.services.SharedPrefereneService
+import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,6 +27,13 @@ class AboutUs : AppCompatActivity() {
 
         // Setup the toolbar
         setSupportActionBar(binding.customToolbar)
+        val settings = SharedPrefereneService.getSettingsFromPreferences(this)
+        Picasso.get()
+            .load("${AppConfig.IMG_URL}uploads/${settings.logo}")
+            .placeholder(R.drawable.splash_image)
+            .error(R.drawable.splash_image)
+            .into(binding.personImg)
+
 
 
         binding.swipeRefreshLayout.setOnRefreshListener {

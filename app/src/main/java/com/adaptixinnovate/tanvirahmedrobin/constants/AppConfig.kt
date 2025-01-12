@@ -4,8 +4,8 @@ import com.adaptixinnovate.tanvirahmedrobin.services.SharedPrefereneService
 
 object AppConfig {
 
-    lateinit var BASE_URL : String
-    lateinit var IMG_URL : String
+    var BASE_URL = ""
+    var IMG_URL = ""
 
 
     fun setUrl(url: String) {

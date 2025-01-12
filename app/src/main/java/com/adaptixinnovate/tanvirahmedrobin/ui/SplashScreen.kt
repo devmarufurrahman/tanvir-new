@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.adaptixinnovate.tanvirahmedrobin.R
 import com.adaptixinnovate.tanvirahmedrobin.constants.AppConfig
 import com.adaptixinnovate.tanvirahmedrobin.databinding.ActivitySplashScreenBinding
+import com.adaptixinnovate.tanvirahmedrobin.model.GetSettings
 import com.adaptixinnovate.tanvirahmedrobin.services.FirebaseService
 import com.adaptixinnovate.tanvirahmedrobin.services.GetData
 import com.adaptixinnovate.tanvirahmedrobin.services.SharedPrefereneService
@@ -30,23 +32,11 @@ class SplashScreen : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         // Initialize binding
         binding = ActivitySplashScreenBinding.inflate(layoutInflater)
-
-        // Check system UI mode and set theme accordingly
-//        when (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) {
-//            Configuration.UI_MODE_NIGHT_YES -> {
-//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES) // Night Mode
-//            }
-//            Configuration.UI_MODE_NIGHT_NO -> {
-//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO) // Light Mode
-//            }
-//            else -> {
-//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM) // Follow system default
-//            }
-//        }
-
         setContentView(binding.root)
 
         FirebaseService.base_url_firebase(this)
+        retrieveBaseUrl()
+
 
 
         // Now use binding to reference your views
@@ -61,10 +51,6 @@ class SplashScreen : AppCompatActivity() {
 
     }
 
-    override fun onStart() {
-        super.onStart()
-        retrieveBaseUrl()
-    }
 
 
     private fun proceedToNextActivity() {
@@ -77,6 +63,9 @@ class SplashScreen : AppCompatActivity() {
 
 
     private fun retrieveBaseUrl() {
+        binding.progressBar.visibility = View.VISIBLE
+        val settings = SharedPrefereneService.getSettingsFromPreferences(this)
+
         CoroutineScope(Dispatchers.Main).launch {
             try {
                 // Call the suspend function to get BaseUrl
@@ -87,9 +76,8 @@ class SplashScreen : AppCompatActivity() {
                 )
                 if (baseUrl.isNotEmpty()){
                     AppConfig.setUrl(baseUrl)
-                    proceedToNextActivity()
-                    setupSplash()
                     GetData.fetchSiteInfo(this@SplashScreen)
+                    setupSplash(settings)
                 } else{
                     recreate()
                 }
@@ -100,18 +88,23 @@ class SplashScreen : AppCompatActivity() {
         }
     }
 
-    private fun setupSplash() {
-        val settings = SharedPrefereneService.getSettingsFromPreferences(this)
+    private fun setupSplash(settings : GetSettings) {
 
-        Log.d("settings_log", "setupSplash: $settings")
-
-        Picasso.get()
-            .load("${AppConfig.IMG_URL}uploads/${settings.logo}")
+        if (settings.logo.isNotEmpty() && settings.name.isNotEmpty()) {
+            binding.progressBar.visibility = View.GONE
+            Picasso.get()
+                .load("${AppConfig.IMG_URL}uploads/${settings.logo}")
 //            .placeholder(R.drawable.splash_image)
-            .error(R.drawable.splash_image)
-            .into(binding.splashImage)
+                .error(R.drawable.splash_image)
+                .into(binding.splashImage)
 
-        binding.splashText.text = resources.getString(R.string.app_name, settings.name)
+            binding.splashText.text = resources.getString(R.string.app_name, settings.name)
+            proceedToNextActivity()
+        } else {
+            recreate()
+        }
+
+
 
     }
 }

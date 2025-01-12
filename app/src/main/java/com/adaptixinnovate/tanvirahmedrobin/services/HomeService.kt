@@ -9,6 +9,7 @@ import com.adaptixinnovate.tanvirahmedrobin.ui.AboutUs
 import com.adaptixinnovate.tanvirahmedrobin.ui.ComplainUs
 import com.adaptixinnovate.tanvirahmedrobin.ui.ContactMe
 import com.adaptixinnovate.tanvirahmedrobin.ui.DataCollectionActivity
+import com.adaptixinnovate.tanvirahmedrobin.ui.ExtortionActivity
 
 object HomeService {
 
@@ -28,6 +29,10 @@ object HomeService {
             }
             context.getString(R.string.about_me) -> {
                 val intent = Intent(context, AboutUs::class.java)
+                context.startActivity(intent)
+            }
+            context.getString(R.string.extortion) -> {
+                val intent = Intent(context, ExtortionActivity::class.java)
                 context.startActivity(intent)
             }
             else -> {
