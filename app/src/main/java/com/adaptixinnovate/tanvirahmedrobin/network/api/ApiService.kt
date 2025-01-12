@@ -20,8 +20,8 @@ import retrofit2.http.Path
 
 interface ApiService {
     @Multipart
-    @POST("contact-me")
-    fun contactMessage(
+    @POST("chadabazi-complain")
+    fun extortionMessage(
         @Part("name") name: RequestBody,
         @Part("phone") phone: RequestBody,
         @Part("message") message: RequestBody,

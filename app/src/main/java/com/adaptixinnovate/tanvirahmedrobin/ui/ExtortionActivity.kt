@@ -127,7 +127,7 @@ class ExtortionActivity : AppCompatActivity() {
         val imageRequestBody = RequestBody.create("image/*".toMediaTypeOrNull(), imageFile)
         val imagePart = MultipartBody.Part.createFormData("file", imageFile.name, imageRequestBody)
 
-        RetrofitClient.instance.contactMessage(namePart, phonePart, messagePart, imagePart)
+        RetrofitClient.instance.extortionMessage(namePart, phonePart, messagePart, imagePart)
             .enqueue(object : Callback<ResponseBody> {
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     binding.progressBar.visibility = View.GONE
