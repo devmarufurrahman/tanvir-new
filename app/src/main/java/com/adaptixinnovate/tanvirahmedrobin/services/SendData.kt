@@ -3,22 +3,13 @@ package com.adaptixinnovate.tanvirahmedrobin.services
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
-import com.adaptixinnovate.tanvirahmedrobin.model.ContactModel
 import com.adaptixinnovate.tanvirahmedrobin.model.DataCollectionModel
 import com.adaptixinnovate.tanvirahmedrobin.network.retrofit.RetrofitClient
 import com.adaptixinnovate.tanvirahmedrobin.ui.CongratulationsActivity
-import com.adaptixinnovate.tanvirahmedrobin.ui.MainActivity
-import okhttp3.Call
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
-import okhttp3.ResponseBody
-import java.io.File
 
 object SendData {
     
