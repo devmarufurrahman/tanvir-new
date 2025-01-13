@@ -77,8 +77,6 @@ class GalleryActivity : AppCompatActivity() {
             }
         }
 
-//        viewModel.fetchGalleryItems()
-
         Handler(Looper.getMainLooper()).postDelayed({
             viewModel.fetchGalleryItems()
         }, 700)

@@ -34,7 +34,10 @@ class ComplainUs : AppCompatActivity() {
     private val imagePickerLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         uri?.let {
             fileUri = it
-//            handleImageUri(it)
+
+            binding.imageView.setImageURI(it)
+            binding.imageView.imageTintList = null
+            binding.fileName.text = "Selected File: ${uriToFile(it).name}"
         }
     }
 
@@ -123,14 +126,6 @@ class ComplainUs : AppCompatActivity() {
                 input.copyTo(output)
             }
         }
-
-
-        // Show the file name in Toast
-        runOnUiThread {
-            Toast.makeText(this, "Selected File: $fileName", Toast.LENGTH_SHORT).show()
-            binding?.fileName?.text = "Selected File: $fileName"
-        }
-
 
         return file
     }

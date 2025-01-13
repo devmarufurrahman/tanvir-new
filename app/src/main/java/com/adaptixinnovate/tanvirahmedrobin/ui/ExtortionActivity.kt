@@ -30,7 +30,10 @@ class ExtortionActivity : AppCompatActivity() {
     private val imagePickerLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         uri?.let {
             fileUri = it
-//            handleImageUri(it)
+
+            binding.imageView.setImageURI(it)
+            binding.imageView.imageTintList = null
+            binding.fileName.text = "Selected File: ${uriToFile(it).name}"
         }
     }
 
@@ -111,9 +114,6 @@ class ExtortionActivity : AppCompatActivity() {
         val file = File(applicationContext.cacheDir, fileName)
         val outputStream = FileOutputStream(file)
 
-        // Show a Toast with the file name
-        Toast.makeText(this, "Selected File: $fileName", Toast.LENGTH_SHORT).show()
-        binding.fileName.text = "Selected File: $fileName"
 
         inputStream?.use { input ->
             outputStream.use { output ->
