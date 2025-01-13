@@ -10,6 +10,7 @@ import com.adaptixinnovate.tanvirahmedrobin.ui.ComplainUs
 import com.adaptixinnovate.tanvirahmedrobin.ui.ContactMe
 import com.adaptixinnovate.tanvirahmedrobin.ui.DataCollectionActivity
 import com.adaptixinnovate.tanvirahmedrobin.ui.ExtortionActivity
+import com.adaptixinnovate.tanvirahmedrobin.ui.Gallery31DofaActivity
 import com.adaptixinnovate.tanvirahmedrobin.ui.GalleryActivity
 
 object HomeService {
@@ -38,6 +39,10 @@ object HomeService {
             }
             context.getString(R.string.gallery) -> {
                 val intent = Intent(context, GalleryActivity::class.java)
+                context.startActivity(intent)
+            }
+            context.getString(R.string.gallery31) -> {
+                val intent = Intent(context, Gallery31DofaActivity::class.java)
                 context.startActivity(intent)
             }
             else -> {

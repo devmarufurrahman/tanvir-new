@@ -176,6 +176,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             Service(getString(R.string.complain_us), R.drawable.ic_complain),
             Service(getString(R.string.extortion), R.drawable.extortion),
             Service(getString(R.string.gallery), R.drawable.gallery),
+            Service(getString(R.string.gallery31), R.drawable.gallery),
             // Add more services here
         )
 

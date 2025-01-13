@@ -20,6 +20,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.Gallery31DofaActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.FullscreenActivity"
             android:exported="false" />
         <activity

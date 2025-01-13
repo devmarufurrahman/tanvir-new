@@ -23,6 +23,17 @@ class GalleryViewModel(private val repository: GalleryRepository) : ViewModel() 
             }
         }
     }
+
+    fun fetchGallery31Items() {
+        viewModelScope.launch {
+            try {
+                val items = repository.getGallery31Items()
+                _galleryItems.postValue(items)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
 }
 
 class GalleryViewModelFactory(private val repository: GalleryRepository) :

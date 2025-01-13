@@ -61,4 +61,7 @@ interface ApiService {
 
     @GET("galleries")
     suspend fun getGalleryItems(): List<GalleryModel>
+
+    @GET("galleries31")
+    suspend fun getGallery31Items(): List<GalleryModel>
 }
