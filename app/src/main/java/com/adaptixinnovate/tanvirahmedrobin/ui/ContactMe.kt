@@ -13,11 +13,14 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.adaptixinnovate.tanvirahmedrobin.R
+import com.adaptixinnovate.tanvirahmedrobin.constants.AppConfig
 import com.adaptixinnovate.tanvirahmedrobin.databinding.ActivityContactMeBinding
 import com.adaptixinnovate.tanvirahmedrobin.network.retrofit.RetrofitClient
 import com.adaptixinnovate.tanvirahmedrobin.utils.FilePickerUtility
 import com.adaptixinnovate.tanvirahmedrobin.services.SendData
 import com.adaptixinnovate.tanvirahmedrobin.services.SharedPrefereneService
+import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -46,6 +49,14 @@ class ContactMe : AppCompatActivity() {
             recreate()
             binding.swipeRefreshLayout.isRefreshing = false
         }
+        if (settings.logo.isNotEmpty()) {
+            Picasso.get()
+                .load("${AppConfig.IMG_URL}uploads/${settings.logo}")
+                .placeholder(R.drawable.progress_animation)
+                .error(R.drawable.load_error)
+                .into(binding.personImg)
+        }
+        if (settings.name.isEmpty()) binding.name.visibility = View.GONE else binding.name.text = settings.name
         if (settings.email.isEmpty()) binding.emailLayout.visibility = View.GONE else binding.contactEmail.text = settings.email
         if (settings.phone.isEmpty()) binding.phoneLayout.visibility = View.GONE else binding.contactPhone.text = settings.phone
         if (settings.address.isEmpty()) binding.addressLayout.visibility = View.GONE else binding.address.text = settings.address

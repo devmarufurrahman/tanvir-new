@@ -104,6 +104,31 @@
                         android:layout_marginBottom="16dp" />
 
                     <LinearLayout
+                        android:id="@+id/personLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="12dp">
+
+                        <ImageView
+                            android:id="@+id/person_img"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:src="@drawable/main_image"
+                            />
+
+                        <TextView
+                            android:id="@+id/name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="18dp"
+                            android:layout_marginTop="5dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/text_secondary" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
                         android:id="@+id/emailLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -121,6 +146,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
+                            android:linksClickable="true"
                             android:textColor="@color/text_secondary" />
                     </LinearLayout>
 
@@ -141,6 +167,7 @@
                             android:id="@+id/contactPhone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:linksClickable="true"
                             android:layout_marginStart="16dp"
                             android:textColor="@color/text_secondary" />
                     </LinearLayout>
