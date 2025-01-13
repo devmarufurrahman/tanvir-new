@@ -121,6 +121,24 @@
                                 android:inputType="phone"/>
                         </com.google.android.material.textfield.TextInputLayout>
 
+                        <!-- Phone Field -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="16dp"
+                            app:boxStrokeColor="@color/primary"
+                            app:hintTextColor="@color/primary"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/addressEditText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/phone_number"
+                                android:inputType="textPostalAddress"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
                         <!-- Message Field -->
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"

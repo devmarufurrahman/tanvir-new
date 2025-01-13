@@ -109,8 +109,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         Picasso.get()
             .load("${AppConfig.IMG_URL}uploads/${settings.logo}")
-            .placeholder(R.drawable.splash_image)
-            .error(R.drawable.splash_image)
+            .placeholder(R.drawable.progress_animation)
+            .error(R.drawable.load_error)
             .into(headerImage)
 
 
@@ -175,6 +175,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             Service(getString(R.string.contact_me), R.drawable.ic_contact),
             Service(getString(R.string.complain_us), R.drawable.ic_complain),
             Service(getString(R.string.extortion), R.drawable.extortion),
+            Service(getString(R.string.gallery), R.drawable.gallery),
             // Add more services here
         )
 

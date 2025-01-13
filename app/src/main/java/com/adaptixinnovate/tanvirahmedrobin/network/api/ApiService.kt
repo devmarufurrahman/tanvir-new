@@ -5,6 +5,7 @@ import com.adaptixinnovate.tanvirahmedrobin.model.AboutModel
 import com.adaptixinnovate.tanvirahmedrobin.model.BannerModel
 import com.adaptixinnovate.tanvirahmedrobin.model.ContactModel
 import com.adaptixinnovate.tanvirahmedrobin.model.DataCollectionModel
+import com.adaptixinnovate.tanvirahmedrobin.model.GalleryModel
 import com.adaptixinnovate.tanvirahmedrobin.model.LocationModel
 import com.adaptixinnovate.tanvirahmedrobin.model.SiteInfo
 import okhttp3.MultipartBody
@@ -24,6 +25,7 @@ interface ApiService {
     fun extortionMessage(
         @Part("name") name: RequestBody,
         @Part("phone") phone: RequestBody,
+        @Part("address") address: RequestBody,
         @Part("message") message: RequestBody,
         @Part file: MultipartBody.Part?
     ): Call<ResponseBody>
@@ -56,4 +58,7 @@ interface ApiService {
 
     @GET("settings")
     fun getSettings(): Call<List<SiteInfo>>
+
+    @GET("galleries")
+    suspend fun getGalleryItems(): List<GalleryModel>
 }

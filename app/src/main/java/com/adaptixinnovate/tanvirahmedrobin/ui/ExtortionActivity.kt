@@ -11,6 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.adaptixinnovate.tanvirahmedrobin.databinding.ActivityExtortionActivityBinding
 import com.adaptixinnovate.tanvirahmedrobin.network.retrofit.RetrofitClient
+import okhttp3.Address
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -58,12 +59,13 @@ class ExtortionActivity : AppCompatActivity() {
             val name = binding.nameEditText.text.toString()
             val phone = binding.phoneEditText.text.toString()
             val message = binding.messageEditText.text.toString()
+            val address = binding.addressEditText.text.toString()
 
-            if (validateInputs(name, phone, message)) {
+            if (validateInputs(name, phone, message, address)) {
                 binding.progressBar.visibility = View.VISIBLE
                 fileUri?.let {
                     val file = uriToFile(it)
-                    uploadImageFile(name, phone, message, file)
+                    uploadImageFile(name, phone, address, message, file)
                 } ?: run {
                     Toast.makeText(this, "Please select an image.", Toast.LENGTH_SHORT).show()
                 }
@@ -74,7 +76,7 @@ class ExtortionActivity : AppCompatActivity() {
 
 
 
-    private fun validateInputs(name: String, phone: String, message: String): Boolean {
+    private fun validateInputs(name: String, phone: String, message: String, address: String): Boolean {
         if (name.isEmpty()) {
             binding.nameEditText.error = "Name cannot be empty"
             return false
@@ -85,6 +87,10 @@ class ExtortionActivity : AppCompatActivity() {
         }
         if (message.isEmpty()) {
             binding.messageEditText.error = "Message cannot be empty"
+            return false
+        }
+        if (address.isEmpty()) {
+            binding.addressEditText.error = "Address cannot be empty"
             return false
         }
         return true
@@ -119,15 +125,16 @@ class ExtortionActivity : AppCompatActivity() {
         return file
     }
 
-    private fun uploadImageFile(name: String, phone: String, message: String, imageFile: File) {
+    private fun uploadImageFile(name: String, phone: String, address: String, message: String, imageFile: File) {
         val namePart = RequestBody.create("text/plain".toMediaTypeOrNull(), name)
         val phonePart = RequestBody.create("text/plain".toMediaTypeOrNull(), phone)
+        val addressPart = RequestBody.create("text/plain".toMediaTypeOrNull(), address)
         val messagePart = RequestBody.create("text/plain".toMediaTypeOrNull(), message)
 
         val imageRequestBody = RequestBody.create("image/*".toMediaTypeOrNull(), imageFile)
         val imagePart = MultipartBody.Part.createFormData("file", imageFile.name, imageRequestBody)
 
-        RetrofitClient.instance.extortionMessage(namePart, phonePart, messagePart, imagePart)
+        RetrofitClient.instance.extortionMessage(namePart, phonePart, addressPart, messagePart, imagePart)
             .enqueue(object : Callback<ResponseBody> {
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     binding.progressBar.visibility = View.GONE

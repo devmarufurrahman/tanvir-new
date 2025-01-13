@@ -94,8 +94,8 @@ class SplashScreen : AppCompatActivity() {
             binding.progressBar.visibility = View.GONE
             Picasso.get()
                 .load("${AppConfig.IMG_URL}uploads/${settings.logo}")
-//            .placeholder(R.drawable.splash_image)
-                .error(R.drawable.splash_image)
+                .placeholder(R.drawable.progress_animation)
+                .error(R.drawable.load_error)
                 .into(binding.splashImage)
 
             binding.splashText.text = resources.getString(R.string.app_name, settings.name)

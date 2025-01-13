@@ -24,14 +24,16 @@ class AboutUs : AppCompatActivity() {
         // Inflate the layout
         binding = ActivityAboutUsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         // Setup the toolbar
         setSupportActionBar(binding.customToolbar)
+        // Enable the Up button
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         val settings = SharedPrefereneService.getSettingsFromPreferences(this)
         Picasso.get()
             .load("${AppConfig.IMG_URL}uploads/${settings.logo}")
-            .placeholder(R.drawable.splash_image)
-            .error(R.drawable.splash_image)
+            .placeholder(R.drawable.progress_animation)
+            .error(R.drawable.load_error)
             .into(binding.personImg)
 
 
@@ -43,8 +45,6 @@ class AboutUs : AppCompatActivity() {
             binding.swipeRefreshLayout.isRefreshing = false
         }
 
-        // Enable the Up button
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         RetrofitClient.instance.getAboutMe().enqueue(object : Callback<List<AboutModel>> {
             override fun onResponse(call: Call<List<AboutModel>>, response: Response<List<AboutModel>>) {
                 if (response.isSuccessful) {

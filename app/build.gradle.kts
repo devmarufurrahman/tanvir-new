@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("com.google.gms.google-services")
+    id ("kotlin-parcelize")
 }
 
 android {
@@ -54,6 +55,10 @@ dependencies {
 
 //    background task
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+
+//    view model
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
 
 //    for slider
     implementation ("com.github.denzcoskun:ImageSlideshow:0.1.2")

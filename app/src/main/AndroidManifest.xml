@@ -20,6 +20,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.FullscreenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.GalleryActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.ExtortionActivity"
             android:exported="false" />
         <activity
