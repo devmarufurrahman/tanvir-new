@@ -76,4 +76,7 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-database-ktx:20.4.0")
+
+//    for shimmer effect
+    implementation("com.facebook.shimmer:shimmer:0.5.0")
 }

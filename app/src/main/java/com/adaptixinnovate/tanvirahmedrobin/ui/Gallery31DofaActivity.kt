@@ -2,6 +2,8 @@ package com.adaptixinnovate.tanvirahmedrobin.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -10,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.adaptixinnovate.tanvirahmedrobin.R
 import com.adaptixinnovate.tanvirahmedrobin.adapter.GalleryAdapter
+import com.adaptixinnovate.tanvirahmedrobin.adapter.ShimmerAdapter
 import com.adaptixinnovate.tanvirahmedrobin.constants.AppConfig
 import com.adaptixinnovate.tanvirahmedrobin.databinding.ActivityGallery31DofaBinding
 import com.adaptixinnovate.tanvirahmedrobin.network.api.ApiService
@@ -23,6 +26,7 @@ class Gallery31DofaActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGallery31DofaBinding
     private lateinit var viewModel: GalleryViewModel
     private lateinit var adapter: GalleryAdapter
+    private lateinit var shimmerAdapter: ShimmerAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityGallery31DofaBinding.inflate(layoutInflater)
@@ -33,11 +37,13 @@ class Gallery31DofaActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 
-        setupViewModel()
+//        showShimmerEffect()
         setupRecyclerView()
+        setupViewModel()
         observeData()
 
     }
+
 
     private fun setupViewModel() {
         val apiService = Retrofit.Builder()
@@ -54,30 +60,39 @@ class Gallery31DofaActivity : AppCompatActivity() {
 
 
     private fun setupRecyclerView() {
-        adapter = GalleryAdapter(emptyList()) { item ->
-            val intent = Intent(this, FullscreenActivity::class.java)
-            intent.putExtra("GALLERY_ITEMS", ArrayList(viewModel.galleryItems.value))
-            intent.putExtra("SELECTED_ITEM_ID", item.id)
-            startActivity(intent)
-        }
         binding.gallery31RecyclerView.layoutManager = GridLayoutManager(this, 2)
-        binding.gallery31RecyclerView.adapter = adapter
+        shimmerAdapter = ShimmerAdapter()
+        binding.gallery31RecyclerView.adapter = shimmerAdapter
     }
 
 
     private fun observeData() {
         viewModel.galleryItems.observe(this) { items ->
-            adapter = GalleryAdapter(items) { item ->
-                val intent = Intent(this, FullscreenActivity::class.java)
-                intent.putParcelableArrayListExtra("GALLERY_ITEMS", ArrayList(items))
-                intent.putExtra("SELECTED_ITEM_ID", item.id)
-                startActivity(intent)
+            if (items.isEmpty()) {
+                showShimmerEffect()
+            } else {
+                adapter = GalleryAdapter(items) { item ->
+                    val intent = Intent(this, FullscreenActivity::class.java)
+                    intent.putParcelableArrayListExtra("GALLERY_ITEMS", ArrayList(items))
+                    intent.putExtra("SELECTED_ITEM_ID", item.id)
+                    startActivity(intent)
+                }
+                binding.gallery31RecyclerView.adapter = adapter
             }
-            binding.gallery31RecyclerView.adapter = adapter
         }
 
-        viewModel.fetchGallery31Items()
+//        viewModel.fetchGallery31Items()
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            viewModel.fetchGallery31Items()
+        }, 700)
+
     }
+
+    private fun showShimmerEffect() {
+        binding.gallery31RecyclerView.adapter = shimmerAdapter
+    }
+
 
     override fun onSupportNavigateUp(): Boolean {
         // This method is called when the up button is pressed. Just finish the activity

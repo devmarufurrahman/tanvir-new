@@ -32,6 +32,7 @@
             android:textColor="@color/primary_color"
             android:textStyle="bold"
             android:maxLines="2"
+            android:gravity="center_horizontal"
             android:ellipsize="end" />
 
     </LinearLayout>

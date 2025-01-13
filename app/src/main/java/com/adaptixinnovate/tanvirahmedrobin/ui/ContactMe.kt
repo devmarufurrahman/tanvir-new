@@ -98,7 +98,12 @@ class ContactMe : AppCompatActivity() {
 
     private fun openUrl(url: String) {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-        startActivity(intent)
+        try {
+            startActivity(intent)
+
+        } catch (e: ActivityNotFoundException) {
+            Toast.makeText(this, "No app found to open the URL", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
