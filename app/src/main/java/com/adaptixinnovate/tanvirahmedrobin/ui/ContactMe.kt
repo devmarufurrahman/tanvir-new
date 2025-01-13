@@ -76,7 +76,7 @@ class ContactMe : AppCompatActivity() {
 
         binding.whatsappButton.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW).apply {
-                data = Uri.parse("https://wa.me/${settings.phone}")
+                data = Uri.parse("https://wa.me/+88${settings.phone}")
                 setPackage("com.whatsapp")
             }
             try {
