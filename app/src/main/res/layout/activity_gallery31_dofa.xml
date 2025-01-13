@@ -41,7 +41,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="আমাদের দফা সমূহ"
+                android:text="আমাদের ৩১ দফা সমূহ"
                 android:textColor="@color/white"
                 android:textSize="22sp"
                 android:textStyle="bold" />
