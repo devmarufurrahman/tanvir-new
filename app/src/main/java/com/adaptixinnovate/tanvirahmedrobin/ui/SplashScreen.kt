@@ -54,11 +54,10 @@ class SplashScreen : AppCompatActivity() {
 
 
     private fun proceedToNextActivity() {
-        // Handler to wait for 2 seconds and then move to MainActivity
         Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this, MainActivity::class.java))
-            finish()  // Finish SplashActivity so user cannot go back to it
-        }, 2000)  // 2000 milliseconds = 2 seconds
+            finish()
+        }, 2000)
     }
 
 
@@ -101,7 +100,10 @@ class SplashScreen : AppCompatActivity() {
             binding.splashText.text = resources.getString(R.string.app_name, settings.name)
             proceedToNextActivity()
         } else {
-            recreate()
+            binding.progressBar.visibility = View.GONE
+            binding.splashText.text = resources.getString(R.string.app_name2)
+            binding.splashImage.setImageResource(R.drawable.main_image)
+            proceedToNextActivity()
         }
 
 

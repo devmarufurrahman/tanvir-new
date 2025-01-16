@@ -90,7 +90,7 @@ object GetData {
                         }
                     }
                 } else {
-                    Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Failed to fetch Settings", Toast.LENGTH_SHORT).show()
                 }
             }
 

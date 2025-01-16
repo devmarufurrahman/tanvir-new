@@ -121,22 +121,38 @@
                                 android:inputType="phone"/>
                         </com.google.android.material.textfield.TextInputLayout>
 
-                        <!-- Phone Field -->
                         <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/wardNameInputLayout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="16dp"
-                            app:boxStrokeColor="@color/primary"
-                            app:hintTextColor="@color/primary"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                            android:hint="@string/ward_name"
+                            app:boxStrokeColor="@color/primary_color"
+                            app:hintTextColor="@color/primary_color"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            android:layout_marginBottom="16dp">
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/addressEditText"
+                            <AutoCompleteTextView
+                                android:id="@+id/wardNameInput"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="@string/address"
-                                android:inputType="textPostalAddress"/>
+                                android:inputType="none" />
+                        </com.google.android.material.textfield.TextInputLayout>
 
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/thanaNameInputLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/thana_name"
+                            app:boxStrokeColor="@color/primary_color"
+                            app:hintTextColor="@color/primary_color"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            android:layout_marginBottom="16dp">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/thanaNameInput"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="none" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <!-- Message Field -->
