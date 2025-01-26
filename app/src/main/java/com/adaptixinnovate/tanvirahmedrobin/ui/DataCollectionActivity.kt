@@ -57,41 +57,12 @@ class DataCollectionActivity : AppCompatActivity() {
             when {
                 name.isEmpty() -> {
                     binding.nameInput.error = "Name cannot be empty"
-                    return@setOnClickListener
-                }
-                fatherName.isEmpty() -> {
-                    binding.fatherNameInput.error = "Father's name cannot be empty"
-                    return@setOnClickListener
-                }
-                motherName.isEmpty() -> {
-                    binding.motherNameInput.error = "Mother's name cannot be empty"
-                    return@setOnClickListener
-                }
-                nid.isEmpty() -> {
-                    binding.nidInput.error = "NID cannot be empty"
-                    return@setOnClickListener
-                }
-//                dateOfBirth.isEmpty() -> {
-//                    return@setOnClickListener
-//                }
-                address.isEmpty() -> {
-                    binding.addressInput.error = "Address cannot be empty"
-                    return@setOnClickListener
-                }
-                gender.isEmpty()->{
-                    binding.genderInputLayout.error = "Select a gender to continue"
-                    return@setOnClickListener
-                }
-                selectedWardId.isNullOrBlank()-> {
-                    binding.wardNameInput.error = "Ward name cannot be empty"
-                    return@setOnClickListener
-                }
-                selectedThanaId.isNullOrBlank()-> {
-                    binding.thanaNameInput.error = "Thana name cannot be empty"
+                    binding.nameInput.requestFocus()
                     return@setOnClickListener
                 }
                 mobile.isEmpty() || !mobile.matches("\\d{11}".toRegex()) -> {
                     binding.mobileInput.error = "Enter a valid 11-digit mobile number"
+                    binding.mobileInput.requestFocus()
                     return@setOnClickListener
                 } else -> {
                     binding.progressBar.visibility = View.VISIBLE

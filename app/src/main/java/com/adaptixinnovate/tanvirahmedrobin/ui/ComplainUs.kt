@@ -97,22 +97,27 @@ class ComplainUs : AppCompatActivity() {
     private fun validateInputs(name: String, phone: String, message: String, wardId: String, thanaId: String): Boolean {
         if (name.isEmpty()) {
             binding.nameEditText.error = "Name cannot be empty"
+            binding.nameEditText.requestFocus()
             return false
         }
         if (phone.isEmpty() || !phone.matches("\\d{11}".toRegex())) {
             binding.phoneEditText.error = "Enter a valid 11-digit phone number"
+            binding.phoneEditText.requestFocus()
             return false
         }
         if (wardId == "0") {
             binding.wardNameInput.error = "Ward cannot be empty"
+            binding.wardNameInput.requestFocus()
             return false
         }
         if (thanaId == "0") {
             binding.thanaNameInput.error = "Thana cannot be empty"
+            binding.thanaNameInput.requestFocus()
             return false
         }
         if (message.isEmpty()) {
             binding.messageEditText.error = "Message cannot be empty"
+            binding.messageEditText.requestFocus()
             return false
         }
         return true
