@@ -34,11 +34,13 @@ object SendData {
                 } else {
                     progressbar.visibility = View.GONE
                     Toast.makeText(context, "Error database: ${response.message()}", Toast.LENGTH_SHORT).show()
+                    Log.e("error", "Error database: ${response.message()}")
                 }
             }
 
             override fun onFailure(call: retrofit2.Call<DataCollectionModel>, t: Throwable) {
                 progressbar.visibility = View.GONE
+                Log.e("error", "onFailure: ${t.message}")
                 Toast.makeText(context, "Failed: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })

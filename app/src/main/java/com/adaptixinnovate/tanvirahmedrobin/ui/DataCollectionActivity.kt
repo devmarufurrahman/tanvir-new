@@ -26,8 +26,8 @@ import java.util.Calendar
 class DataCollectionActivity : AppCompatActivity() {
     private lateinit var binding : ActivityDataCollectionBinding
     private var dateOfBirth = ""
-    var selectedWardId: String? = null
-    var selectedThanaId: String? = null
+    var selectedWardId: String? = "null"
+    var selectedThanaId: String? = "null"
     private lateinit var autoCompleteTextView: AutoCompleteTextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,14 +45,14 @@ class DataCollectionActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         binding.dataSubmitButton.setOnClickListener {
-            val name = binding.nameInput.text.toString().trim()
-            val fatherName = binding.fatherNameInput.text.toString().trim()
-            val motherName = binding.motherNameInput.text.toString().trim()
-            val nid = binding.nidInput.text.toString().trim()
-            val address = binding.addressInput.text.toString().trim()
-            val mobile = binding.mobileInput.text.toString().trim()
-            val gender = binding.genderNameInput.text.toString().trim()
-            dateOfBirth = getSelectedDate().toString()
+            val name = binding.nameInput.text.toString().trim() ?: ""
+            val fatherName = binding.fatherNameInput.text.toString().trim() ?: ""
+            val motherName = binding.motherNameInput.text.toString().trim() ?: ""
+            val nid = binding.nidInput.text.toString().trim() ?: ""
+            val address = binding.addressInput.text.toString().trim() ?: ""
+            val mobile = binding.mobileInput.text.toString().trim() ?: ""
+            val gender = binding.genderNameInput.text.toString().trim() ?: ""
+            dateOfBirth = getSelectedDate().toString() ?: ""
 
             when {
                 name.isEmpty() -> {
@@ -103,7 +103,6 @@ class DataCollectionActivity : AppCompatActivity() {
 
                     dropDown.setupDropdown(wardView, wardsList, context) { wardId ->
                         // Handle the selected ward ID here
-                        println("Selected Ward ID: $wardId")
                         selectedWardId = wardId.toString()
                         loadThanas(wardId, context, thanaView)
                     }
@@ -176,10 +175,10 @@ class DataCollectionActivity : AppCompatActivity() {
         val selectedMonth = binding.dobCardView.monthSpinner.selectedItem.toString()
         val selectedYear = binding.dobCardView.yearSpinner.selectedItem.toString()
 
-        if (selectedDay == "Select Day" && selectedMonth == "Select Month" && selectedYear == "Select Year") {
-            Toast.makeText(this, "Please select a valid date", Toast.LENGTH_SHORT).show()
-            return null
-        }
+//        if (selectedDay == "Select Day" && selectedMonth == "Select Month" && selectedYear == "Select Year") {
+//            Toast.makeText(this, "Please select a valid date", Toast.LENGTH_SHORT).show()
+//            return null
+//        }
 
         return "$selectedDay-$selectedMonth-$selectedYear"
     }
