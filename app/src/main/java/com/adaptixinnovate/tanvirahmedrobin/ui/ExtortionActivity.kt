@@ -29,8 +29,8 @@ import java.io.FileOutputStream
 class ExtortionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityExtortionActivityBinding
     private var fileUri: Uri? = null
-    var selectedWardId: String? = null
-    var selectedThanaId: String? = null
+    var selectedWardId: String? = "0"
+    var selectedThanaId: String? = "0"
 
     // File picker launcher
     private val imagePickerLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
@@ -77,7 +77,7 @@ class ExtortionActivity : AppCompatActivity() {
                     val file = uriToFile(it)
                     uploadImageFile(name, phone, message, selectedWardId.toString(), selectedThanaId.toString(), file)
                 } ?: run {
-                    Toast.makeText(this, "Please select an image.", Toast.LENGTH_SHORT).show()
+                    uploadImageFile(name, phone, message, selectedWardId.toString(), selectedThanaId.toString(), null)
                 }
             }
         }
@@ -95,16 +95,16 @@ class ExtortionActivity : AppCompatActivity() {
             binding.phoneEditText.error = "Enter a valid 11-digit phone number"
             return false
         }
+        if (wardId == "0") {
+            binding.wardNameInput.error = "Ward cannot be empty"
+            return false
+        }
+        if (thanaId == "0") {
+            binding.thanaNameInput.error = "Thana cannot be empty"
+            return false
+        }
         if (message.isEmpty()) {
             binding.messageEditText.error = "Message cannot be empty"
-            return false
-        }
-        if (wardId.isEmpty()) {
-            binding.thanaNameInput.error = "Ward cannot be empty"
-            return false
-        }
-        if (thanaId.isEmpty()) {
-            binding.thanaNameInput.error = "Thana cannot be empty"
             return false
         }
         return true
@@ -190,22 +190,28 @@ class ExtortionActivity : AppCompatActivity() {
         return file
     }
 
-    private fun uploadImageFile(name: String, phone: String, message: String,wardId: String, thanaId: String, imageFile: File) {
+    private fun uploadImageFile(name: String, phone: String, message: String,wardId: String, thanaId: String, imageFile: File?) {
         val namePart = RequestBody.create("text/plain".toMediaTypeOrNull(), name)
         val phonePart = RequestBody.create("text/plain".toMediaTypeOrNull(), phone)
         val messagePart = RequestBody.create("text/plain".toMediaTypeOrNull(), message)
         val ward_id = RequestBody.create("text/plain".toMediaTypeOrNull(), wardId)
         val thana_id = RequestBody.create("text/plain".toMediaTypeOrNull(), thanaId)
 
-        val imageRequestBody = RequestBody.create("image/*".toMediaTypeOrNull(), imageFile)
-        val imagePart = MultipartBody.Part.createFormData("file", imageFile.name, imageRequestBody)
+        val imageRequestBody = imageFile?.let {
+            RequestBody.create("image/*".toMediaTypeOrNull(),
+                it
+            )
+        }
+
+        val imagePart =
+            imageRequestBody?.let { MultipartBody.Part.createFormData("file", imageFile.name, it) }
 
         RetrofitClient.instance.extortionMessage(namePart, phonePart, messagePart, ward_id, thana_id, imagePart)
             .enqueue(object : Callback<ResponseBody> {
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     binding.progressBar.visibility = View.GONE
                     if (response.isSuccessful) {
-                        Toast.makeText(this@ExtortionActivity, "Upload successful!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@ExtortionActivity, "Submit successful!", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this@ExtortionActivity, CongratulationsActivity::class.java))
                         finish()
                     } else {

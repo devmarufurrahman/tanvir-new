@@ -141,7 +141,7 @@
                             android:layout_marginBottom="24dp"
                             app:cardCornerRadius="12dp"
                             app:cardElevation="0dp"
-                            app:cardBackgroundColor="@color/upload_background">
+                            >
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -173,7 +173,7 @@
                                     android:text="@string/browse_files"
                                     android:textAllCaps="false"
                                     android:textSize="14sp"
-                                    android:textColor="@color/white"
+                                    android:textColor="@color/primary"
                                     android:paddingStart="24dp"
                                     android:paddingEnd="24dp"
                                     android:paddingTop="12dp"
@@ -181,7 +181,7 @@
                                     app:icon="@drawable/ic_upload"
                                     app:iconGravity="textStart"
                                     app:iconPadding="8dp"
-                                    app:iconTint="@color/white"
+                                    app:iconTint="@color/primary"
                                     app:strokeColor="@color/primary"
                                     app:strokeWidth="1.5dp"
                                     app:cornerRadius="12dp"

@@ -3,19 +3,14 @@ package com.adaptixinnovate.tanvirahmedrobin.ui
 import android.content.ContentResolver
 import android.content.Intent
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.provider.OpenableColumns
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import com.adaptixinnovate.tanvirahmedrobin.databinding.ActivityComplainUsBinding
 import com.adaptixinnovate.tanvirahmedrobin.network.retrofit.RetrofitClient
-import com.adaptixinnovate.tanvirahmedrobin.utils.FilePickerUtility
-import com.adaptixinnovate.tanvirahmedrobin.services.SendData
-import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -80,7 +75,7 @@ class ComplainUs : AppCompatActivity() {
                     val file = uriToFile(it)
                     uploadImageFile(name, phone, message, file)
                 } ?: run {
-                    Toast.makeText(this, "Please select an image.", Toast.LENGTH_SHORT).show()
+                    uploadImageFile(name, phone, message, null)
                 }
             }
         }
@@ -130,20 +125,25 @@ class ComplainUs : AppCompatActivity() {
         return file
     }
 
-    private fun uploadImageFile(name: String, phone: String, message: String, imageFile: File) {
+    private fun uploadImageFile(name: String, phone: String, message: String, imageFile: File?) {
         val namePart = RequestBody.create("text/plain".toMediaTypeOrNull(), name)
         val phonePart = RequestBody.create("text/plain".toMediaTypeOrNull(), phone)
         val messagePart = RequestBody.create("text/plain".toMediaTypeOrNull(), message)
 
-        val imageRequestBody = RequestBody.create("image/*".toMediaTypeOrNull(), imageFile)
-        val imagePart = MultipartBody.Part.createFormData("file", imageFile.name, imageRequestBody)
+        val imageRequestBody = imageFile?.let {
+            RequestBody.create("image/*".toMediaTypeOrNull(),
+                it
+            )
+        }
+        val imagePart =
+            imageRequestBody?.let { MultipartBody.Part.createFormData("file", imageFile.name, it) }
 
         RetrofitClient.instance.complainMessage(namePart, phonePart, messagePart, imagePart)
             .enqueue(object : Callback<ResponseBody> {
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     binding.progressBar.visibility = View.GONE
                     if (response.isSuccessful) {
-                        Toast.makeText(this@ComplainUs, "Upload successful!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@ComplainUs, "Submit successful!", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this@ComplainUs, CongratulationsActivity::class.java))
                         finish()
                     } else {
