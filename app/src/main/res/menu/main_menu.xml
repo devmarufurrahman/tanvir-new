@@ -19,4 +19,9 @@
             android:icon="@drawable/ic_complain"
             android:title="@string/complain_us"
             />
+        <item
+            android:id="@+id/nav_data_collection"
+            android:icon="@drawable/ic_complain"
+            android:title="@string/data_collection_form"
+            />
 </menu>

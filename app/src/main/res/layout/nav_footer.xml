@@ -110,7 +110,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_gravity="center"
-                android:text="Md Nazmus Sakib"
+                android:text="Md Nazmus Shakib"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 android:textColor="#2196F3"/>

@@ -171,10 +171,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun setupRecyclerView() {
         val services = listOf(
             Service(getString(R.string.complain_us), R.drawable.ic_complain),
-            Service(getString(R.string.contact_me), R.drawable.ic_contact),
             Service(getString(R.string.extortion), R.drawable.extortion),
-            Service(getString(R.string.gallery), R.drawable.gallery31),
             Service(getString(R.string.gallery31), R.drawable.gallery),
+            Service(getString(R.string.gallery), R.drawable.gallery31),
+            Service(getString(R.string.contact_me), R.drawable.ic_contact),
             Service(getString(R.string.about_me), R.drawable.ic_about),
             // Add more services here
         )
@@ -210,6 +210,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_complain -> {
                 // Add appropriate action for "Complain Us"
                 val intent = Intent(this, ComplainUs::class.java)
+                startActivity(intent)
+            }
+            R.id.nav_data_collection -> {
+                // Add appropriate action for "Complain Us"
+                val intent = Intent(this, DataCollectionActivity::class.java)
                 startActivity(intent)
             }
 

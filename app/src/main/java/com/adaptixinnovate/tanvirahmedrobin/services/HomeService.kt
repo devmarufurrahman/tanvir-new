@@ -3,6 +3,7 @@ package com.adaptixinnovate.tanvirahmedrobin.services
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import android.widget.Toast
 import com.adaptixinnovate.tanvirahmedrobin.R
 import com.adaptixinnovate.tanvirahmedrobin.adapter.Service
 import com.adaptixinnovate.tanvirahmedrobin.ui.AboutUs
@@ -48,6 +49,7 @@ object HomeService {
             else -> {
                 // Default action or a message
                 Log.d("ServiceClick", "Unknown service: ${service.name}")
+                Toast.makeText(context, "Unknown service: ${service.name}", Toast.LENGTH_SHORT).show()
             }
         }
     }
