@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColor">@color/text_secondary</item>
         <item name="navigationDrawerBackground">@color/black</item>
-        <item name="hintTextColor">@color/white</item>
+        <item name="hintTextColor">@color/primary</item>
+        <item name="textInputStyle">@style/CustomTextInputLayout</item>
     </style>
 </resources>

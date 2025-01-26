@@ -32,4 +32,10 @@
         <item name="android:windowExitAnimation">@anim/slide_down</item>
     </style>
 
+    <style name="CustomTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintTextColor">@color/primary_dark</item> <!-- Dynamic Hint Color -->
+        <item name="boxStrokeColor">@color/primary</item> <!-- Dynamic Box Stroke Color -->
+        <item name="android:textColorHint">@color/primary_color</item>
+    </style>
+
 </resources>

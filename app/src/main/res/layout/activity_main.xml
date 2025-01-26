@@ -104,6 +104,7 @@
         android:backgroundTint="@color/white"
         app:menu="@menu/main_menu"
         app:headerLayout="@layout/main_menu_header"
+        app:itemTextColor="@color/black"
         android:layout_gravity="start"
         android:visibility="visible"
         android:background="?attr/navigationDrawerBackground">

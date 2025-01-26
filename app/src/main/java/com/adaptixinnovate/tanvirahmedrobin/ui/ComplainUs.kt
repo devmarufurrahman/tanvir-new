@@ -1,16 +1,21 @@
 package com.adaptixinnovate.tanvirahmedrobin.ui
 
 import android.content.ContentResolver
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.OpenableColumns
 import android.view.View
+import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.adaptixinnovate.tanvirahmedrobin.databinding.ActivityComplainUsBinding
+import com.adaptixinnovate.tanvirahmedrobin.model.LocationModel
 import com.adaptixinnovate.tanvirahmedrobin.network.retrofit.RetrofitClient
+import com.adaptixinnovate.tanvirahmedrobin.utils.SetupDropDown
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -24,6 +29,8 @@ import java.io.FileOutputStream
 class ComplainUs : AppCompatActivity() {
     private lateinit var binding: ActivityComplainUsBinding
     private var fileUri: Uri? = null
+    var selectedWardId: String? = "0"
+    var selectedThanaId: String? = "0"
 
     // File picker launcher
     private val imagePickerLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
@@ -45,11 +52,13 @@ class ComplainUs : AppCompatActivity() {
         // Inflate the layout
         binding = ActivityComplainUsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
 
         // Setup the toolbar
         setSupportActionBar(binding.customToolbar)
         // Enable the Up button
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        fetchWards(this, binding.wardNameInput, binding.thanaNameInput)
 
 
         binding.swipeRefreshLayout.setOnRefreshListener {
@@ -69,13 +78,13 @@ class ComplainUs : AppCompatActivity() {
             val phone = binding.phoneEditText.text.toString()
             val message = binding.messageEditText.text.toString()
 
-            if (validateInputs(name, phone, message)) {
+            if (validateInputs(name, phone, message, selectedWardId.toString(), selectedThanaId.toString())) {
                 binding.progressBar.visibility = View.VISIBLE
                 fileUri?.let {
                     val file = uriToFile(it)
-                    uploadImageFile(name, phone, message, file)
+                    uploadImageFile(name, phone, message, selectedWardId.toString(), selectedThanaId.toString(), file)
                 } ?: run {
-                    uploadImageFile(name, phone, message, null)
+                    uploadImageFile(name, phone, message, selectedWardId.toString(), selectedThanaId.toString(), null)
                 }
             }
         }
@@ -85,7 +94,7 @@ class ComplainUs : AppCompatActivity() {
 
 
 
-    private fun validateInputs(name: String, phone: String, message: String): Boolean {
+    private fun validateInputs(name: String, phone: String, message: String, wardId: String, thanaId: String): Boolean {
         if (name.isEmpty()) {
             binding.nameEditText.error = "Name cannot be empty"
             return false
@@ -94,12 +103,74 @@ class ComplainUs : AppCompatActivity() {
             binding.phoneEditText.error = "Enter a valid 11-digit phone number"
             return false
         }
+        if (wardId == "0") {
+            binding.wardNameInput.error = "Ward cannot be empty"
+            return false
+        }
+        if (thanaId == "0") {
+            binding.thanaNameInput.error = "Thana cannot be empty"
+            return false
+        }
         if (message.isEmpty()) {
             binding.messageEditText.error = "Message cannot be empty"
             return false
         }
         return true
     }
+
+
+    private fun fetchWards(context: Context, wardView: AutoCompleteTextView, thanaView: AutoCompleteTextView) {
+        RetrofitClient.instance.getWard().enqueue(object : retrofit2.Callback<List<LocationModel>> {
+            override fun onResponse(call: retrofit2.Call<List<LocationModel>>, response: retrofit2.Response<List<LocationModel>>) {
+                if (response.isSuccessful) {
+                    val wardsList = response.body() ?: emptyList()
+                    val dropDown = SetupDropDown()
+
+                    dropDown.setupDropdown(wardView, wardsList, context) { wardId ->
+                        // Handle the selected ward ID here
+                        println("Selected Ward ID: $wardId")
+                        selectedWardId = wardId.toString()
+                        loadThanas(wardId, context, thanaView)
+                    }
+
+                } else {
+                    println(response)
+                    Toast.makeText(context, "Failed to retrieve data", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: retrofit2.Call<List<LocationModel>>, t: Throwable) {
+                println("Error: ${t.message}")
+                Toast.makeText(context, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    fun loadThanas(wardId: Int, context: Context, inputView: AutoCompleteTextView) {
+        RetrofitClient.instance.getThanasByWardId(wardId).enqueue(object :
+            Callback<List<LocationModel>> {
+            override fun onResponse(call: Call<List<LocationModel>>, response: Response<List<LocationModel>>) {
+                if (response.isSuccessful) {
+                    val thanaList = response.body() ?: emptyList()
+                    val dropDown = SetupDropDown()
+                    dropDown.setupDropdown(inputView, thanaList, context) { thanaId ->
+                        // Handle the selected ward ID here
+                        println("Selected Thana ID: $thanaId")
+                        selectedThanaId = thanaId.toString()
+                    }
+
+                } else {
+                    Toast.makeText(context, "Failed to retrieve data", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<List<LocationModel>>, t: Throwable) {
+                Toast.makeText(context, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+
 
     private fun uriToFile(uri: Uri): File {
         val contentResolver: ContentResolver = applicationContext.contentResolver
@@ -125,10 +196,12 @@ class ComplainUs : AppCompatActivity() {
         return file
     }
 
-    private fun uploadImageFile(name: String, phone: String, message: String, imageFile: File?) {
+    private fun uploadImageFile(name: String, phone: String, message: String, wardId: String, thanaId: String, imageFile: File?) {
         val namePart = RequestBody.create("text/plain".toMediaTypeOrNull(), name)
         val phonePart = RequestBody.create("text/plain".toMediaTypeOrNull(), phone)
         val messagePart = RequestBody.create("text/plain".toMediaTypeOrNull(), message)
+        val ward_id = RequestBody.create("text/plain".toMediaTypeOrNull(), wardId)
+        val thana_id = RequestBody.create("text/plain".toMediaTypeOrNull(), thanaId)
 
         val imageRequestBody = imageFile?.let {
             RequestBody.create("image/*".toMediaTypeOrNull(),
@@ -138,7 +211,7 @@ class ComplainUs : AppCompatActivity() {
         val imagePart =
             imageRequestBody?.let { MultipartBody.Part.createFormData("file", imageFile.name, it) }
 
-        RetrofitClient.instance.complainMessage(namePart, phonePart, messagePart, imagePart)
+        RetrofitClient.instance.complainMessage(namePart, phonePart, messagePart, ward_id, thana_id, imagePart)
             .enqueue(object : Callback<ResponseBody> {
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     binding.progressBar.visibility = View.GONE

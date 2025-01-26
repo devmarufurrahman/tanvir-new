@@ -21,7 +21,7 @@
             />
         <item
             android:id="@+id/nav_data_collection"
-            android:icon="@drawable/ic_complain"
+            android:icon="@drawable/people_add"
             android:title="@string/data_collection_form"
             />
 </menu>

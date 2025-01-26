@@ -38,6 +38,8 @@ interface ApiService {
         @Part("name") name: RequestBody,
         @Part("phone") phone: RequestBody,
         @Part("message") message: RequestBody,
+        @Part("ward_id") ward_id: RequestBody,
+        @Part("thana_id") thana_id: RequestBody,
         @Part file: MultipartBody.Part?
     ): Call<ResponseBody>
 

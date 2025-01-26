@@ -125,7 +125,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             settings.linkedin,
             settings.youtube
         )
-        val drawables = listOf(R.drawable.facebook, R.drawable.linkedin, R.drawable.youtube)
+        val drawables = listOf(R.drawable.facebook, R.drawable.x_logo, R.drawable.youtube)
 
         binding.footer.fbLink.setOnClickListener {
             openUrl("https://www.facebook.com/ssnazmusshakib")

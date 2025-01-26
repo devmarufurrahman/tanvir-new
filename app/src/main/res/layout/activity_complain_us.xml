@@ -33,7 +33,8 @@
             <!-- Header with Gradient -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="wrap_content"
+                android:minHeight="120dp"
                 android:background="@drawable/contact_header_gradient"
                 android:gravity="center"
                 android:orientation="vertical"
@@ -88,13 +89,14 @@
                             android:layout_marginBottom="16dp"
                             app:boxStrokeColor="@color/primary"
                             app:hintTextColor="@color/primary"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                            >
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/nameEditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="@string/full_name"
+                                android:textColor="@color/black"
                                 android:inputType="textPersonName" />
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -105,14 +107,55 @@
                             android:layout_marginBottom="16dp"
                             app:boxStrokeColor="@color/primary"
                             app:hintTextColor="@color/primary"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                            >
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/phoneEditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="@string/phone_number"
+                                android:textColor="@color/black"
                                 android:inputType="phone" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/wardNameInputLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/ward_name"
+                            app:boxStrokeColor="@color/primary_color"
+                            app:hintTextColor="@color/primary_color"
+                            android:textColorHint="@color/black"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            android:layout_marginBottom="16dp">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/wardNameInput"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/black"
+                                android:inputType="none" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/thanaNameInputLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/thana_name"
+                            app:boxStrokeColor="@color/primary_color"
+                            app:hintTextColor="@color/primary_color"
+                            android:textColorHint="@color/black"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            android:layout_marginBottom="16dp">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/thanaNameInput"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/black"
+                                android:inputType="none" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <!-- Message Field -->
@@ -122,13 +165,14 @@
                             android:layout_marginBottom="24dp"
                             app:boxStrokeColor="@color/primary"
                             app:hintTextColor="@color/primary"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                            >
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/messageEditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:hint="@string/your_message"
+                                android:textColor="@color/black"
                                 android:inputType="textMultiLine"
                                 android:minLines="4"
                                 android:gravity="top" />
@@ -141,6 +185,7 @@
                             android:layout_marginBottom="24dp"
                             app:cardCornerRadius="12dp"
                             app:cardElevation="0dp"
+                            app:cardBackgroundColor="@color/white"
                             >
 
                             <LinearLayout

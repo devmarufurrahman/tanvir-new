@@ -60,6 +60,12 @@ class ContactMe : AppCompatActivity() {
         if (settings.email.isEmpty()) binding.emailLayout.visibility = View.GONE else binding.contactEmail.text = settings.email
         if (settings.phone.isEmpty()) binding.phoneLayout.visibility = View.GONE else binding.contactPhone.text = settings.phone
         if (settings.address.isEmpty()) binding.addressLayout.visibility = View.GONE else binding.address.text = settings.address
+        if (settings.website.isEmpty()) binding.websiteLayout.visibility = View.GONE else binding.website.text = settings.website
+
+
+        binding.website.setOnClickListener {
+            openUrl(settings.website)
+        }
 
         binding.contactEmail.setOnClickListener {
             val intent = Intent(Intent.ACTION_SENDTO)

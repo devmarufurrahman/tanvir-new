@@ -9,6 +9,7 @@
     <color name="colorPrimary">#2c3e50</color>
     <color name="colorPrimaryDark">#1a252f</color>
     <color name="colorAccent">#0DAE50</color>
+    <color name="hintColor">#757575</color>
 
     <color name="stroke_color">#E0E0E0</color>
     <color name="primary">#013E7B</color>
