@@ -5,7 +5,7 @@ data class GetSettings(
     val logo: String,
     val address: String,
     val facebook: String,
-    val linkedin: String,
+    val x: String,
     val youtube: String,
     val copyright: String,
     val email: String,

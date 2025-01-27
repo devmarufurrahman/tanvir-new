@@ -42,9 +42,10 @@ class SplashScreen : AppCompatActivity() {
         FirebaseMessaging.getInstance().subscribeToTopic("general")
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(this, "Subscribed to topic: general", Toast.LENGTH_SHORT).show()
+                    Log.d("Subscribed", "Subscribed to topic: general")
                 } else {
                     Toast.makeText(this, "Subscription failed", Toast.LENGTH_SHORT).show()
+                    Log.e("Subscribed", "Subscription failed")
                 }
             }
 

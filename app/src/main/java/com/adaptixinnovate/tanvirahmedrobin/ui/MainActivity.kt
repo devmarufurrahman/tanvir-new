@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -136,10 +137,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         headerPhone.text = settings.phone
 
 
-        val icons = listOf("facebook", "linkedin", "youtube")
+        val icons = listOf("facebook", "x", "youtube")
         val urls = listOf(
             settings.facebook,
-            settings.linkedin,
+            settings.x,
             settings.youtube
         )
         val drawables = listOf(R.drawable.facebook, R.drawable.x_logo, R.drawable.youtube)
@@ -179,8 +180,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun openUrl(url: String) {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-        startActivity(intent)
+        try {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            startActivity(intent)
+        } catch (e : Exception){
+            e.printStackTrace()
+            Toast.makeText(this, "No URL Found to Open", Toast.LENGTH_SHORT).show()
+        }
+
     }
 
 

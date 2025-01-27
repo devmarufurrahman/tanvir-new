@@ -17,7 +17,7 @@ data class SiteInfo(
     val twitter: String?,
     val instagram: String?,
     val youtube: String?,
-    val linkedin: String?,
+    val x: String?,
     val pinterest: String?,
     val website: String?,
     val meta_title: String?,

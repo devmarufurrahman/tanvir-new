@@ -77,7 +77,7 @@ object GetData {
                                     logo,
                                     info.address ?: "",
                                     info.facebook ?: "",
-                                    info.linkedin ?: "",
+                                    info.x ?: "",
                                     info.youtube ?: "",
                                     info.footer_text ?: "",
                                     info.email ?: "",

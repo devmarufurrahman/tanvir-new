@@ -268,7 +268,7 @@
                                 android:contentDescription="Facebook" />
 
                             <LinearLayout
-                                android:id="@+id/linkedinButton"
+                                android:id="@+id/xButton"
                                 android:layout_width="48dp"
                                 android:layout_height="48dp"
                                 android:orientation="horizontal"

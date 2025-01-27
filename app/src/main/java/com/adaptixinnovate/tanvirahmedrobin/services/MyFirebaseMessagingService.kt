@@ -30,21 +30,27 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         val channelId = "fcm_default_channel"
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // For Android 8.0 and above
             val channel = NotificationChannel(
-                channelId, "Default Channel", NotificationManager.IMPORTANCE_HIGH
-            )
+                channelId,
+                "Default Channel",
+                NotificationManager.IMPORTANCE_HIGH
+            ).apply {
+                description = "This is the default notification channel"
+            }
             notificationManager.createNotificationChannel(channel)
         }
 
-        val notification = NotificationCompat.Builder(this, channelId)
-            .setContentTitle(title)
-            .setContentText(body)
+        // Notification builder for all versions
+        val notificationBuilder = NotificationCompat.Builder(this, channelId)
+            .setContentTitle(title ?: "Notification Title")
+            .setContentText(body ?: "Notification Body")
             .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setAutoCancel(true)
-            .build()
 
-        notificationManager.notify(0, notification)
-
+        // Show notification
+        notificationManager.notify(System.currentTimeMillis().toInt(), notificationBuilder.build())
     }
 
 }

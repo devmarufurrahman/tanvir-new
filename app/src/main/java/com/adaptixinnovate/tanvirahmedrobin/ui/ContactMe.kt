@@ -83,8 +83,8 @@ class ContactMe : AppCompatActivity() {
             openUrl(settings.facebook)
         }
 
-        binding.linkedinButton.setOnClickListener {
-            openUrl(settings.linkedin)
+        binding.xButton.setOnClickListener {
+            openUrl(settings.x)
         }
 
         binding.youtubeButton.setOnClickListener {

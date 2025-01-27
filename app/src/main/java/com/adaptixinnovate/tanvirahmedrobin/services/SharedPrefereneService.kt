@@ -27,14 +27,14 @@ object SharedPrefereneService {
     }
 
 
-    fun saveSettingsToPreferences(context: Context, name: String, logo: String, address: String, facebook: String, linkedin: String, youtube: String, copyright: String, email: String, phone: String, instagram: String, website: String ) {
+    fun saveSettingsToPreferences(context: Context, name: String, logo: String, address: String, facebook: String, x: String, youtube: String, copyright: String, email: String, phone: String, instagram: String, website: String ) {
         val sharedPreferences = context.getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putString("name", name)
         editor.putString("logo", logo)
         editor.putString("address", address)
         editor.putString("facebook", facebook)
-        editor.putString("linkedin", linkedin)
+        editor.putString("x", x)
         editor.putString("youtube", youtube)
         editor.putString("copyright", copyright)
         editor.putString("email", email)
@@ -52,7 +52,7 @@ object SharedPrefereneService {
         val logo = sharedPreferences.getString("logo", "") ?: ""
         val address = sharedPreferences.getString("address", "") ?: ""
         val facebook = sharedPreferences.getString("facebook", "") ?: ""
-        val linkedin = sharedPreferences.getString("linkedin", "") ?: ""
+        val x = sharedPreferences.getString("x", "") ?: ""
         val youtube = sharedPreferences.getString("youtube", "") ?: ""
         val copyright = sharedPreferences.getString("copyright", "") ?: ""
         val email = sharedPreferences.getString("email", "") ?: ""
@@ -65,7 +65,7 @@ object SharedPrefereneService {
             logo = logo,
             address = address,
             facebook = facebook,
-            linkedin = linkedin,
+            x = x,
             youtube = youtube,
             copyright = copyright,
             email = email,
