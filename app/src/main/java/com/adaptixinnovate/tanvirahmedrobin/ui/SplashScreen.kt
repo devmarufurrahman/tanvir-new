@@ -19,6 +19,7 @@ import com.adaptixinnovate.tanvirahmedrobin.services.FirebaseService
 import com.adaptixinnovate.tanvirahmedrobin.services.GetData
 import com.adaptixinnovate.tanvirahmedrobin.services.SharedPrefereneService
 import com.adaptixinnovate.tanvirahmedrobin.services.SharedPrefereneService.getFromPreferences
+import com.google.firebase.messaging.FirebaseMessaging
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -36,6 +37,16 @@ class SplashScreen : AppCompatActivity() {
 
         FirebaseService.base_url_firebase(this)
         retrieveBaseUrl()
+
+        // Subscribe to a topic
+        FirebaseMessaging.getInstance().subscribeToTopic("general")
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(this, "Subscribed to topic: general", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "Subscription failed", Toast.LENGTH_SHORT).show()
+                }
+            }
 
 
 
