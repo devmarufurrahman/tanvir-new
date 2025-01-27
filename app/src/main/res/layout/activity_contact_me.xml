@@ -268,7 +268,6 @@
                                 android:contentDescription="Facebook" />
 
                             <LinearLayout
-                                android:id="@+id/xButton"
                                 android:layout_width="48dp"
                                 android:layout_height="48dp"
                                 android:orientation="horizontal"
@@ -279,8 +278,9 @@
                                 >
 
                                 <ImageButton
-                                    android:layout_width="22dp"
-                                    android:layout_height="22dp"
+                                    android:id="@+id/xButton"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
                                     android:layout_gravity="center"
                                     android:src="@drawable/x_logo"
                                     android:contentDescription="X" />
