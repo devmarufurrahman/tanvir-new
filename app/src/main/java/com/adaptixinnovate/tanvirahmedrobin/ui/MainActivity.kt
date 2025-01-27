@@ -1,18 +1,21 @@
 package com.adaptixinnovate.tanvirahmedrobin.ui
 
-import android.app.DatePickerDialog
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.GridLayoutManager
@@ -24,13 +27,12 @@ import com.adaptixinnovate.tanvirahmedrobin.databinding.ActivityMainBinding
 import com.adaptixinnovate.tanvirahmedrobin.services.FirebaseService
 import com.adaptixinnovate.tanvirahmedrobin.services.GetData
 import com.adaptixinnovate.tanvirahmedrobin.services.HomeService
-import com.adaptixinnovate.tanvirahmedrobin.services.SendData
 import com.adaptixinnovate.tanvirahmedrobin.services.SharedPrefereneService
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
-import java.util.Calendar
+
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     // Lazy initialization of binding object
@@ -51,6 +53,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             putString("open_home", "Opening Home")
         }
         firebaseAnalytics.logEvent("open_home", bundle)
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+                    1001
+                )
+            }
+        }
 
 
 //        setup banner
