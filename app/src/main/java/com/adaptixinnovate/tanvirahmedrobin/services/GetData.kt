@@ -37,7 +37,7 @@ object GetData {
                     if (activeBanner.isNotEmpty()) {
 
                         for (banner in activeBanner) {
-                            imageList.add(SlideModel("${AppConfig.IMG_URL}${banner.image}", banner.title))
+                            imageList.add(SlideModel("${AppConfig.IMG_URL}${banner.image}"))
                         }
 
 
