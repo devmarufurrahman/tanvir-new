@@ -205,15 +205,15 @@
                                     android:id="@+id/imageView"
                                     android:layout_width="48dp"
                                     android:layout_height="48dp"
-                                    android:src="@drawable/ic_upload"
+                                    android:visibility="gone"
                                     app:tint="@color/primary"/>
 
                                 <TextView
                                     android:id="@+id/fileName"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:visibility="gone"
                                     android:layout_marginTop="12dp"
-                                    android:text="@string/drop_your_files_here_or"
                                     android:textColor="@color/text_secondary"/>
                                 <!-- Option 1: Modern Outlined Button with Icon and Custom Style -->
                                 <com.google.android.material.button.MaterialButton

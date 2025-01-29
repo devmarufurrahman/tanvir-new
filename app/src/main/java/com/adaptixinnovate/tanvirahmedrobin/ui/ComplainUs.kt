@@ -37,6 +37,8 @@ class ComplainUs : AppCompatActivity() {
         uri?.let {
             fileUri = it
 
+            binding.imageView.visibility = View.VISIBLE
+            binding.fileName.visibility = View.VISIBLE
             binding.imageView.setImageURI(it)
             binding.imageView.imageTintList = null
             binding.fileName.text = "Selected File: ${uriToFile(it).name}"
