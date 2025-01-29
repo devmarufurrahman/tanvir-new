@@ -175,10 +175,10 @@ class DataCollectionActivity : AppCompatActivity() {
         val selectedMonth = binding.dobCardView.monthSpinner.selectedItem.toString()
         val selectedYear = binding.dobCardView.yearSpinner.selectedItem.toString()
 
-//        if (selectedDay == "Select Day" && selectedMonth == "Select Month" && selectedYear == "Select Year") {
-//            Toast.makeText(this, "Please select a valid date", Toast.LENGTH_SHORT).show()
-//            return null
-//        }
+        if (selectedDay == "Select Day" && selectedMonth == "Select Month" && selectedYear == "Select Year") {
+            Toast.makeText(this, "Please select a valid date", Toast.LENGTH_SHORT).show()
+            return null
+        }
 
         return "$selectedDay-$selectedMonth-$selectedYear"
     }
