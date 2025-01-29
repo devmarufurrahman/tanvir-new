@@ -4,7 +4,6 @@
         <shape>
             <solid android:color="@color/white"/>
             <corners android:radius="8dp"/>
-            <padding android:right="1dp"/>
         </shape>
     </item>
     <item android:gravity="end|center_vertical"
