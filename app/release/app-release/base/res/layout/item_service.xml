@@ -1,0 +1,36 @@
+
+×
+;
+android*http://schemas.android.com/apk/res/android
+4
+app'http://schemas.android.com/apk/res-auto1com.google.android.material.card.MaterialCardView"
+'http://schemas.android.com/apk/res-autostrokeColor@color/splash_background"(¯ˆŒø2#
+!™†”øcolor/splash_background0"P
+*http://schemas.android.com/apk/res/androidlayout_margin4dp"(ö„2:h"`
+*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"(ô„2:0ÿÿÿÿÿÿÿÿÿ"a
+*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"(õ„2:0şÿÿÿÿÿÿÿÿ"N
+'http://schemas.android.com/apk/res-autocardElevation2dp"(Œø2:h"o
+'http://schemas.android.com/apk/res-autocardBackgroundColor@color/white"(›Œø2
+©†”øcolor/white0"Q
+'http://schemas.android.com/apk/res-autocardCornerRadius8dp"(œŒø2:h*‚
+ù
+LinearLayout"L
+*http://schemas.android.com/apk/res/androidgravitycenter"(¯„2:8"O
+*http://schemas.android.com/apk/res/android	minHeight150dp"(À‚„2:h¬"J
+*http://schemas.android.com/apk/res/androidpadding8dp"(Õ„2:h"`
+*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"(ô„2:0ÿÿÿÿÿÿÿÿÿ"a
+*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"(õ„2:0şÿÿÿÿÿÿÿÿ"R
+*http://schemas.android.com/apk/res/androidorientationvertical"(Ä„2:0*ü
+ó	ImageView"V
+*http://schemas.android.com/apk/res/androidlayout_marginBottom8dp"(ú„2:h"P
+*http://schemas.android.com/apk/res/androidlayout_width60dp"(ô„2:hx"Q
+*http://schemas.android.com/apk/res/androidlayout_height60dp"(õ„2:hx"i
+*http://schemas.android.com/apk/res/androidid@+id/service_icon"(Ğ„2
+Şƒ øid/service_icon01*å
+ÜTextView"R
+*http://schemas.android.com/apk/res/androidtextAlignmentcenter" (±‡„2:0"`
+*http://schemas.android.com/apk/res/androidlayout_widthwrap_content" (ô„2:0şÿÿÿÿÿÿÿÿ"a
+*http://schemas.android.com/apk/res/androidlayout_heightwrap_content" (õ„2:0şÿÿÿÿÿÿÿÿ"L
+*http://schemas.android.com/apk/res/androidtextSize14sp" (•„2:h‚"i
+*http://schemas.android.com/apk/res/androidid@+id/service_name" (Ğ„2
+ßƒ øid/service_name0 '"

@@ -19,6 +19,10 @@ import com.adaptixinnovate.tanvirahmedrobin.R
 import com.adaptixinnovate.tanvirahmedrobin.constants.AppConfig
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.net.URL
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
@@ -42,11 +46,15 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         val channelId = "fcm_default_channel"
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(
-                channelId, "Default Channel", NotificationManager.IMPORTANCE_HIGH
-            ).apply {
-                description = "This is the default notification channel"
+            val channelName = "Default Channel"
+            val channelDescription = "This is the default notification channel"
+            val importance = NotificationManager.IMPORTANCE_HIGH
+
+            val channel = NotificationChannel(channelId, channelName, importance).apply {
+                description = channelDescription
             }
+
+            val notificationManager = getSystemService(NotificationManager::class.java)
             notificationManager.createNotificationChannel(channel)
         }
 
@@ -59,24 +67,35 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             .setAutoCancel(true)
 
         // Image Load & Make Rounded
-        imageUrl?.let { url ->
-            try {
-                val bitmap = URL(url).openStream().use { BitmapFactory.decodeStream(it) }
-                val roundedBitmap = getRoundedCornerBitmap(bitmap, 50) // 50 Radius for smooth corners
+        if (!imageUrl.isNullOrEmpty()) {
+            Thread {
+                try {
+                    val bitmap = URL(imageUrl).openStream().use { BitmapFactory.decodeStream(it) }
+                    val roundedBitmap = getRoundedCornerBitmap(bitmap, 50)
 
-                val bigPictureStyle = NotificationCompat.BigPictureStyle()
-                    .bigPicture(roundedBitmap)
-                    .setBigContentTitle(title)
-                    .setSummaryText(body)
+                    val bigPictureStyle = NotificationCompat.BigPictureStyle()
+                        .bigPicture(roundedBitmap)
+                        .setBigContentTitle(title)
+                        .setSummaryText(body)
 
-                notificationBuilder.setStyle(bigPictureStyle)
-            } catch (e: Exception) {
-                Log.e("FCM", "Error loading image: ${e.message}")
-            }
+                    notificationBuilder.setStyle(bigPictureStyle)
+
+                    notificationManager.notify(System.currentTimeMillis().toInt(), notificationBuilder.build())
+                } catch (e: Exception) {
+                    Log.e("FCM", "Error loading image: ${e.message}")
+                    notificationManager.notify(System.currentTimeMillis().toInt(), notificationBuilder.build())
+                }
+            }.start()
+            Log.d("TAG", "img1")
+        } else {
+            Log.d("TAG", "img2")
+            notificationManager.notify(System.currentTimeMillis().toInt(), notificationBuilder.build())
         }
 
-        notificationManager.notify(System.currentTimeMillis().toInt(), notificationBuilder.build())
+
     }
+
+
 
     // Function to Make Image Rounded
     private fun getRoundedCornerBitmap(bitmap: Bitmap, radius: Int): Bitmap {
