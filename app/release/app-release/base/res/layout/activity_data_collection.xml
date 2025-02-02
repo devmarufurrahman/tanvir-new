@@ -1,288 +1,0 @@
-
-Ÿ
-;
-android*http://schemas.android.com/apk/res/android0
-4
-app'http://schemas.android.com/apk/res-auto05androidx.swiperefreshlayout.widget.SwipeRefreshLayout"`
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"(ô„2:0ÿÿÿÿÿÿÿÿÿ"a
-*http://schemas.android.com/apk/res/androidlayout_heightmatch_parent"(õ„2:0ÿÿÿÿÿÿÿÿÿ"u
-*http://schemas.android.com/apk/res/androidid@+id/swipeRefreshLayout"(Ğ„2!
-‰„ øid/swipeRefreshLayout0*—›
-›%androidx.core.widget.NestedScrollView"`
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"(ô„2:0ÿÿÿÿÿÿÿÿÿ"a
-*http://schemas.android.com/apk/res/androidlayout_heightmatch_parent"(õ„2:0ÿÿÿÿÿÿÿÿÿ*™
-“™LinearLayout"`
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"(ô„2:0ÿÿÿÿÿÿÿÿÿ"a
-*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"(õ„2:0şÿÿÿÿÿÿÿÿ"R
-*http://schemas.android.com/apk/res/androidorientationvertical"(Ä„2:0*İ
-Ô!androidx.appcompat.widget.Toolbar"t
-*http://schemas.android.com/apk/res/android
-background@color/colorAccent"(Ô„2
-´€”øcolor/colorAccent0"i
-'http://schemas.android.com/apk/res-autotitle@string/app_name"(Ä‰Œø2
-Ÿ€Äøstring/app_name0"‡
-'http://schemas.android.com/apk/res-autotitleTextAppearance@style/Toolbar.TitleText"(Ï‰Œø2#
-!ì…Èøstyle/Toolbar.TitleText0"`
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"(ô„2:0ÿÿÿÿÿÿÿÿÿ"a
-*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"(õ„2:0şÿÿÿÿÿÿÿÿ"j
-'http://schemas.android.com/apk/res-autotitleTextColor@color/white"(Ğ‰Œø2
-©†”øcolor/white0"£
-*http://schemas.android.com/apk/res/androidtheme,@style/ThemeOverlay.AppCompat.Dark.ActionBar"(€€„27
-5ı„Èø+style/ThemeOverlay.AppCompat.Dark.ActionBar0"m
-*http://schemas.android.com/apk/res/androidid@+id/custom_toolbar"(Ğ„2
-š øid/custom_toolbar0D*ã
-
-Ú
-LinearLayout"’
-*http://schemas.android.com/apk/res/android
-background!@drawable/contact_header_gradient"((Ô„2,
-*Ÿœø drawable/contact_header_gradient0"L
-*http://schemas.android.com/apk/res/androidgravitycenter"((¯„2:8"K
-*http://schemas.android.com/apk/res/androidpadding24dp"((Õ„2:h0"`
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"((ô„2:0ÿÿÿÿÿÿÿÿÿ"S
-*http://schemas.android.com/apk/res/androidlayout_height100dp"((õ„2:hÈ"R
-*http://schemas.android.com/apk/res/androidorientationvertical"((Ä„2:0*
-…TextView"W
-*http://schemas.android.com/apk/res/androidgravitycenter_horizontal"3(¯„2:8"`
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"3(ô„2:0ÿÿÿÿÿÿÿÿÿ"a
-*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"3(õ„2:0şÿÿÿÿÿÿÿÿ"L
-*http://schemas.android.com/apk/res/androidtextSize26sp"3(•„2:h‚4"Q
-*http://schemas.android.com/apk/res/androidpaddingBottom10dp"3(Ù„2:h"g
-*http://schemas.android.com/apk/res/android	textColor@color/white"3(˜„2
-©†”øcolor/white0"‚
-*http://schemas.android.com/apk/res/androidtext@string/data_collection_form"3(Ï‚„2'
-%Ë€Äøstring/data_collection_form0"L
-*http://schemas.android.com/apk/res/android	textStylebold"3(—„2:83/((*¢„
-˜„RelativeLayout"K
-*http://schemas.android.com/apk/res/androidpadding16dp">(Õ„2:h "`
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent">(ô„2:0ÿÿÿÿÿÿÿÿÿ"a
-*http://schemas.android.com/apk/res/androidlayout_heightwrap_content">(õ„2:0şÿÿÿÿÿÿÿÿ"R
-*http://schemas.android.com/apk/res/androidorientationvertical">(Ä„2:0*–s
-s
-ScrollView"X
-*http://schemas.android.com/apk/res/androidlayout_centerInParenttrue"G(ƒ„2:@"Y
-*http://schemas.android.com/apk/res/androidlayout_marginVertical16dp"G(¼Š„2:h "T
-*http://schemas.android.com/apk/res/androidlayout_marginTop16dp"G(ø„2:h "W
-*http://schemas.android.com/apk/res/androidlayout_marginBottom16dp"G(ú„2:h "’
-*http://schemas.android.com/apk/res/android
-background!@drawable/glass_button_background"G(Ô„2,
-*¯œø drawable/glass_button_background0"`
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"G(ô„2:0ÿÿÿÿÿÿÿÿÿ"a
-*http://schemas.android.com/apk/res/androidlayout_heightmatch_parent"G(õ„2:0ÿÿÿÿÿÿÿÿÿ"a
-*http://schemas.android.com/apk/res/androidid@+id/fromMain"G(Ğ„2
-ç øid/fromMain0*İl
-ÔlLinearLayout"K
-*http://schemas.android.com/apk/res/androidpadding16dp"M(Õ„2:h "`
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"M(ô„2:0ÿÿÿÿÿÿÿÿÿ"a
-*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"M(õ„2:0şÿÿÿÿÿÿÿÿ"R
-*http://schemas.android.com/apk/res/androidorientationvertical"M(Ä„2:0*’
-‰5com.google.android.material.textfield.TextInputLayout"W
-*http://schemas.android.com/apk/res/androidlayout_marginBottom16dp"X(ú„2:h "l
-*http://schemas.android.com/apk/res/androidhint@string/name_hint"X(Ğ‚„2
-ÑÄøstring/name_hint0"`
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"X(ô„2:0ÿÿÿÿÿÿÿÿÿ"a
-*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"X(õ„2:0şÿÿÿÿÿÿÿÿ"z
-'http://schemas.android.com/apk/res-autoboxStrokeColor@color/primary_color"X(…Œø2
-‰†”øcolor/primary_color0"y
-'http://schemas.android.com/apk/res-autohintTextColor@color/primary_color"X(²„Œø2
-‰†”øcolor/primary_color0"”style<@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"X2I
-GØˆÈø;style/Widget.MaterialComponents.TextInputLayout.OutlinedBox0ÿÿ"o
-*http://schemas.android.com/apk/res/androidid@+id/nameInputLayout"X(Ğ„2
-ğ‚ øid/nameInputLayout0*Ä
-»7com.google.android.material.textfield.TextInputEditText"`
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"^(ô„2:0ÿÿÿÿÿÿÿÿÿ"a
-*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"^(õ„2:0şÿÿÿÿÿÿÿÿ"V
-*http://schemas.android.com/apk/res/android	inputTypetextPersonName"^( „„2:8a"c
-*http://schemas.android.com/apk/res/androidid@+id/nameInput"^(Ğ„2
-ï‚ øid/nameInput0^JXD*®
-¥5com.google.android.material.textfield.TextInputLayout"W
-*http://schemas.android.com/apk/res/androidlayout_marginBottom16dp"i(ú„2:h "p
-*http://schemas.android.com/apk/res/androidhint@string/father_name"i(Ğ‚„2
-Ö€Äøstring/father_name0"`
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"i(ô„2:0ÿÿÿÿÿÿÿÿÿ"a
-*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"i(õ„2:0şÿÿÿÿÿÿÿÿ"z
-'http://schemas.android.com/apk/res-autoboxStrokeColor@color/primary_color"i(…Œø2
-‰†”øcolor/primary_color0"y
-'http://schemas.android.com/apk/res-autohintTextColor@color/primary_color"i(²„Œø2
-‰†”øcolor/primary_color0"”style<@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"i2I
-GØˆÈø;style/Widget.MaterialComponents.TextInputLayout.OutlinedBox0ÿÿ"{
-*http://schemas.android.com/apk/res/androidid@+id/fatherNameInputLayout"i(Ğ„2$
-"Ô øid/fatherNameInputLayout0*Ğ
-Ç7com.google.android.material.textfield.TextInputEditText"`
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"o(ô„2:0ÿÿÿÿÿÿÿÿÿ"a
-*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"o(õ„2:0şÿÿÿÿÿÿÿÿ"V
-*http://schemas.android.com/apk/res/android	inputTypetextPersonName"o( „„2:8a"o
-*http://schemas.android.com/apk/res/androidid@+id/fatherNameInput"o(Ğ„2
-Ó øid/fatherNameInput0oJiD*³
-ª5com.google.android.material.textfield.TextInputLayout"W
-*http://schemas.android.com/apk/res/androidlayout_marginBottom16dp"z(ú„2:h "p
-*http://schemas.android.com/apk/res/androidhint@string/mother_name"z(Ğ‚„2
-’Äøstring/mother_name0"`
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"z(ô„2:0ÿÿÿÿÿÿÿÿÿ"a
-*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"z(õ„2:0şÿÿÿÿÿÿÿÿ"z
-'http://schemas.android.com/apk/res-autoboxStrokeColor@color/primary_color"z(…Œø2
-‰†”øcolor/primary_color0"y
-'http://schemas.android.com/apk/res-autohintTextColor@color/primary_color"z(²„Œø2
-‰†”øcolor/primary_color0"”style<@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"z2I
-GØˆÈø;style/Widget.MaterialComponents.TextInputLayout.OutlinedBox0ÿÿ"{
-*http://schemas.android.com/apk/res/androidid@+id/motherNameInputLayout"z(Ğ„2$
-"Ó‚ øid/motherNameInputLayout0*Õ
-Ë7com.google.android.material.textfield.TextInputEditText"a
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"€(ô„2:0ÿÿÿÿÿÿÿÿÿ"b
-*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"€(õ„2:0şÿÿÿÿÿÿÿÿ"W
-*http://schemas.android.com/apk/res/android	inputTypetextPersonName"€( „„2:8a"p
-*http://schemas.android.com/apk/res/androidid@+id/motherNameInput"€(Ğ„2
-Ò‚ øid/motherNameInput0€JzD*ˆ
-ş
-5com.google.android.material.textfield.TextInputLayout"X
-*http://schemas.android.com/apk/res/androidlayout_marginBottom16dp"‹(ú„2:h "a
-*http://schemas.android.com/apk/res/androidhint@string/nid"‹(Ğ‚„2
-ÒÄø
-string/nid0"a
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"‹(ô„2:0ÿÿÿÿÿÿÿÿÿ"b
-*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"‹(õ„2:0şÿÿÿÿÿÿÿÿ"{
-'http://schemas.android.com/apk/res-autoboxStrokeColor@color/primary_color"‹(…Œø2
-‰†”øcolor/primary_color0"z
-'http://schemas.android.com/apk/res-autohintTextColor@color/primary_color"‹(²„Œø2
-‰†”øcolor/primary_color0"•style<@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"‹2I
-GØˆÈø;style/Widget.MaterialComponents.TextInputLayout.OutlinedBox0ÿÿ"n
-*http://schemas.android.com/apk/res/androidid@+id/nidInputLayout"‹(Ğ„2
-‚ƒ øid/nidInputLayout0*¿
-µ7com.google.android.material.textfield.TextInputEditText"a
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"‘(ô„2:0ÿÿÿÿÿÿÿÿÿ"b
-*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"‘(õ„2:0şÿÿÿÿÿÿÿÿ"O
-*http://schemas.android.com/apk/res/android	inputTypenumber"‘( „„2:8"b
-*http://schemas.android.com/apk/res/androidid@+id/nidInput"‘(Ğ„2
-ƒ øid/nidInput0‘B‹D*ø
-îinclude"Xlayout@layout/date_selection_layout"š2*
-(¨€¬ølayout/date_selection_layout0ÿÿ"X
-*http://schemas.android.com/apk/res/androidlayout_marginBottom10dp"š(ú„2:h"a
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"š(ô„2:0ÿÿÿÿÿÿÿÿÿ"b
-*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"š(õ„2:0şÿÿÿÿÿÿÿÿ"h
-*http://schemas.android.com/apk/res/androidid@+id/dobCardView"š(Ğ„2
-´ øid/dobCardView0š#*«
-¡5com.google.android.material.textfield.TextInputLayout"X
-*http://schemas.android.com/apk/res/androidlayout_marginBottom16dp"¤(ú„2:h "i
-*http://schemas.android.com/apk/res/androidhint@string/address"¤(Ğ‚„2
-€Äøstring/address0"a
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"¤(ô„2:0ÿÿÿÿÿÿÿÿÿ"b
-*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"¤(õ„2:0şÿÿÿÿÿÿÿÿ"{
-'http://schemas.android.com/apk/res-autoboxStrokeColor@color/primary_color"¤(…Œø2
-‰†”øcolor/primary_color0"z
-'http://schemas.android.com/apk/res-autohintTextColor@color/primary_color"¤(²„Œø2
-‰†”øcolor/primary_color0"•style<@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"¤2I
-GØˆÈø;style/Widget.MaterialComponents.TextInputLayout.OutlinedBox0ÿÿ"v
-*http://schemas.android.com/apk/res/androidid@+id/addressInputLayout"¤(Ğ„2!
-Ì€ øid/addressInputLayout0*Ò
-È7com.google.android.material.textfield.TextInputEditText"a
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"ª(ô„2:0ÿÿÿÿÿÿÿÿÿ"b
-*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"ª(õ„2:0şÿÿÿÿÿÿÿÿ"Z
-*http://schemas.android.com/apk/res/android	inputTypetextPostalAddress"ª( „„2:8q"j
-*http://schemas.android.com/apk/res/androidid@+id/addressInput"ª(Ğ„2
-Ë€ øid/addressInput0ªM¤D*¥
-›5com.google.android.material.textfield.TextInputLayout"X
-*http://schemas.android.com/apk/res/androidlayout_marginBottom16dp"µ(ú„2:h "g
-*http://schemas.android.com/apk/res/androidhint@string/gender"µ(Ğ‚„2
-Ü€Äøstring/gender0"a
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"µ(ô„2:0ÿÿÿÿÿÿÿÿÿ"b
-*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"µ(õ„2:0şÿÿÿÿÿÿÿÿ"{
-'http://schemas.android.com/apk/res-autoboxStrokeColor@color/primary_color"µ(…Œø2
-‰†”øcolor/primary_color0"z
-'http://schemas.android.com/apk/res-autohintTextColor@color/primary_color"µ(²„Œø2
-‰†”øcolor/primary_color0"½styleP@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"µ2]
-[ÛˆÈøOstyle/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu0ÿÿ"t
-*http://schemas.android.com/apk/res/androidid@+id/genderInputLayout"µ(Ğ„2 
-ï øid/genderInputLayout0*¨
-AutoCompleteTextView"a
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"»(ô„2:0ÿÿÿÿÿÿÿÿÿ"b
-*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"»(õ„2:0şÿÿÿÿÿÿÿÿ"M
-*http://schemas.android.com/apk/res/android	inputTypenone"»( „„2:8 "p
-*http://schemas.android.com/apk/res/androidid@+id/genderNameInput"»(Ğ„2
-ğ øid/genderNameInput0»@µD*«
-¡5com.google.android.material.textfield.TextInputLayout"X
-*http://schemas.android.com/apk/res/androidlayout_marginBottom16dp"Ç(ú„2:h "m
-*http://schemas.android.com/apk/res/androidhint@string/ward_name"Ç(Ğ‚„2
-çÄøstring/ward_name0"a
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"Ç(ô„2:0ÿÿÿÿÿÿÿÿÿ"b
-*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"Ç(õ„2:0şÿÿÿÿÿÿÿÿ"{
-'http://schemas.android.com/apk/res-autoboxStrokeColor@color/primary_color"Ç(…Œø2
-‰†”øcolor/primary_color0"z
-'http://schemas.android.com/apk/res-autohintTextColor@color/primary_color"Ç(²„Œø2
-‰†”øcolor/primary_color0"½styleP@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"Ç2]
-[ÛˆÈøOstyle/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu0ÿÿ"x
-*http://schemas.android.com/apk/res/androidid@+id/wardNameInputLayout"Ç(Ğ„2"
- Õ„ øid/wardNameInputLayout0*¤
-šAutoCompleteTextView"a
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"Í(ô„2:0ÿÿÿÿÿÿÿÿÿ"b
-*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"Í(õ„2:0şÿÿÿÿÿÿÿÿ"M
-*http://schemas.android.com/apk/res/android	inputTypenone"Í( „„2:8 "l
-*http://schemas.android.com/apk/res/androidid@+id/wardNameInput"Í(Ğ„2
-Ô„ øid/wardNameInput0Í@ÇD*±
-§5com.google.android.material.textfield.TextInputLayout"X
-*http://schemas.android.com/apk/res/androidlayout_marginBottom16dp"Ø(ú„2:h "o
-*http://schemas.android.com/apk/res/androidhint@string/thana_name"Ø(Ğ‚„2
-åÄøstring/thana_name0"a
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"Ø(ô„2:0ÿÿÿÿÿÿÿÿÿ"b
-*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"Ø(õ„2:0şÿÿÿÿÿÿÿÿ"{
-'http://schemas.android.com/apk/res-autoboxStrokeColor@color/primary_color"Ø(…Œø2
-‰†”øcolor/primary_color0"z
-'http://schemas.android.com/apk/res-autohintTextColor@color/primary_color"Ø(²„Œø2
-‰†”øcolor/primary_color0"½styleP@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"Ø2]
-[ÛˆÈøOstyle/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu0ÿÿ"z
-*http://schemas.android.com/apk/res/androidid@+id/thanaNameInputLayout"Ø(Ğ„2#
-!­„ øid/thanaNameInputLayout0*¦
-œAutoCompleteTextView"a
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"Ş(ô„2:0ÿÿÿÿÿÿÿÿÿ"b
-*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"Ş(õ„2:0şÿÿÿÿÿÿÿÿ"M
-*http://schemas.android.com/apk/res/android	inputTypenone"Ş( „„2:8 "n
-*http://schemas.android.com/apk/res/androidid@+id/thanaNameInput"Ş(Ğ„2
-¬„ øid/thanaNameInput0Ş@ØD*£
-™5com.google.android.material.textfield.TextInputLayout"X
-*http://schemas.android.com/apk/res/androidlayout_marginBottom16dp"é(ú„2:h "q
-*http://schemas.android.com/apk/res/androidhint@string/mobile_hint"é(Ğ‚„2
-‘Äøstring/mobile_hint0"a
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"é(ô„2:0ÿÿÿÿÿÿÿÿÿ"b
-*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"é(õ„2:0şÿÿÿÿÿÿÿÿ"{
-'http://schemas.android.com/apk/res-autoboxStrokeColor@color/primary_color"é(…Œø2
-‰†”øcolor/primary_color0"z
-'http://schemas.android.com/apk/res-autohintTextColor@color/primary_color"é(²„Œø2
-‰†”øcolor/primary_color0"•style<@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"é2I
-GØˆÈø;style/Widget.MaterialComponents.TextInputLayout.OutlinedBox0ÿÿ"t
-*http://schemas.android.com/apk/res/androidid@+id/mobileInputLayout"é(Ğ„2 
-Ê‚ øid/mobileInputLayout0*Ä
-º7com.google.android.material.textfield.TextInputEditText"a
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"ï(ô„2:0ÿÿÿÿÿÿÿÿÿ"b
-*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"ï(õ„2:0şÿÿÿÿÿÿÿÿ"N
-*http://schemas.android.com/apk/res/android	inputTypephone"ï( „„2:8"h
-*http://schemas.android.com/apk/res/androidid@+id/mobileInput"ï(Ğ„2
-É‚ øid/mobileInput0ïAéDM4G*œ	
-’	1com.google.android.material.button.MaterialButton"Y
-*http://schemas.android.com/apk/res/androidlayout_marginVertical5dp"€(¼Š„2:h
-"T
-*http://schemas.android.com/apk/res/androidlayout_marginTop5dp"€(ø„2:h
-"W
-*http://schemas.android.com/apk/res/androidlayout_marginBottom5dp"€(ú„2:h
-"l
-*http://schemas.android.com/apk/res/androidlayout_below@+id/fromMain"€(…ƒ„2
-ç øid/fromMain0"a
-*http://schemas.android.com/apk/res/androidlayout_widthmatch_parent"€(ô„2:0ÿÿÿÿÿÿÿÿÿ"R
-*http://schemas.android.com/apk/res/androidlayout_height60dp"€(õ„2:hx"M
-*http://schemas.android.com/apk/res/androidtextSize16sp"€(•„2:h‚ "O
-'http://schemas.android.com/apk/res-autocornerRadius12dp"€(Ø‚Œø2:h"P
-*http://schemas.android.com/apk/res/androidtextAllCapsfalse"€(Œ‡„2:@ "Gstyle@style/GradientButton"€2"
- ¦‚Èøstyle/GradientButton0ÿÿ"r
-*http://schemas.android.com/apk/res/androidid@+id/dataSubmitButton"€(Ğ„2
- øid/dataSubmitButton0"
-*http://schemas.android.com/apk/res/androidtext@string/submit_button_text"€(Ï‚„2%
-#ãÄøstring/submit_button_text0€*ç
-İProgressBar"N
-*http://schemas.android.com/apk/res/android
-visibilitygone"Š(Ü„2:0"Y
-*http://schemas.android.com/apk/res/androidlayout_centerInParenttrue"Š(ƒ„2:@"a
-*http://schemas.android.com/apk/res/androidlayout_widthwrap_content"Š(ô„2:0şÿÿÿÿÿÿÿÿ"b
-*http://schemas.android.com/apk/res/androidlayout_heightwrap_content"Š(õ„2:0şÿÿÿÿÿÿÿÿ"r
-*http://schemas.android.com/apk/res/androidindeterminateTint@color/accent"Š(éˆ„2
-™€”øcolor/accent0"h
-*http://schemas.android.com/apk/res/androidid@+id/progressBar"Š(Ğ„2
-³ƒ øid/progressBar0Š>,
-0
