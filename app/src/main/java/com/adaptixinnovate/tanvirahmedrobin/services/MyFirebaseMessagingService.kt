@@ -29,10 +29,10 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     override fun onMessageReceived(message: RemoteMessage) {
         message.notification?.let {
-            showNotification(it.title, it.body, "${AppConfig.IMG_URL}${message.data["image"]}")
+            showNotification(it.title, it.body, "${it.imageUrl}")
 //            showNotification(it.title, it.body, "${message.data["image"]}")
+        Log.d("NotificationMsg", "onMessageReceived: ${it.imageUrl}")
         }
-        Log.d("NotificationMsg", "onMessageReceived: ${AppConfig.IMG_URL}${message.data["image"]}")
     }
 
     override fun onNewToken(token: String) {
