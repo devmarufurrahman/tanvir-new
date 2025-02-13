@@ -56,7 +56,8 @@
                     android:id="@+id/daySpinner"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:background="@drawable/spinner_dropdown_background"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:popupBackground="@color/white"
                     android:spinnerMode="dropdown"/>
 
 
@@ -84,7 +85,8 @@
                     android:id="@+id/monthSpinner"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:background="@drawable/spinner_dropdown_background"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:popupBackground="@color/white"
                     android:layout_gravity="center"
                     android:spinnerMode="dropdown"/>
 
@@ -112,7 +114,8 @@
                     android:id="@+id/yearSpinner"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:background="@drawable/spinner_dropdown_background"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:popupBackground="@color/white"
                     android:spinnerMode="dropdown"/>
             </LinearLayout>
 

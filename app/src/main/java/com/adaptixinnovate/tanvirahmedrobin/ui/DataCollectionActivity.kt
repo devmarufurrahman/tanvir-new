@@ -52,7 +52,7 @@ class DataCollectionActivity : AppCompatActivity() {
             val address = binding.addressInput.text.toString().trim() ?: ""
             val mobile = binding.mobileInput.text.toString().trim() ?: ""
             val gender = binding.genderNameInput.text.toString().trim() ?: ""
-//            dateOfBirth = getSelectedDate().toString() ?: ""
+            dateOfBirth = getSelectedDate().toString() ?: ""
 
             when {
                 name.isEmpty() -> {
@@ -151,8 +151,8 @@ class DataCollectionActivity : AppCompatActivity() {
         val days = listOf("Select Day") + (1..31).map { it.toString() }
         val months = listOf("Select Month") + (1..12).map { it.toString() }
 
-//        binding.dobCardView.daySpinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, days)
-//        binding.dobCardView.monthSpinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, months)
+        binding.dobCardView.daySpinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, days)
+        binding.dobCardView.monthSpinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, months)
 
         setupYearSpinner()
     }
@@ -165,23 +165,23 @@ class DataCollectionActivity : AppCompatActivity() {
 
         val years = listOf("Select Year") + (startYear..endYear).map { it.toString() }
 
-//        binding.dobCardView.yearSpinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, years)
+        binding.dobCardView.yearSpinner.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, years)
     }
 
 
 
-//    private fun getSelectedDate(): String? {
-//        val selectedDay = binding.dobCardView.daySpinner.selectedItem.toString()
-//        val selectedMonth = binding.dobCardView.monthSpinner.selectedItem.toString()
-//        val selectedYear = binding.dobCardView.yearSpinner.selectedItem.toString()
-//
-//        if (selectedDay == "Select Day" && selectedMonth == "Select Month" && selectedYear == "Select Year") {
-//            Toast.makeText(this, "Please select a valid date", Toast.LENGTH_SHORT).show()
-//            return null
-//        }
-//
-//        return "$selectedDay-$selectedMonth-$selectedYear"
-//    }
+    private fun getSelectedDate(): String? {
+        val selectedDay = binding.dobCardView.daySpinner.selectedItem.toString()
+        val selectedMonth = binding.dobCardView.monthSpinner.selectedItem.toString()
+        val selectedYear = binding.dobCardView.yearSpinner.selectedItem.toString()
+
+        if (selectedDay == "Select Day" && selectedMonth == "Select Month" && selectedYear == "Select Year") {
+            Toast.makeText(this, "Please select a valid date", Toast.LENGTH_SHORT).show()
+            return null
+        }
+
+        return "$selectedDay-$selectedMonth-$selectedYear"
+    }
 
 
 
