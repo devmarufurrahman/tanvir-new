@@ -1,6 +1,7 @@
 package com.adaptixinnovate.tanvirahmedrobin.ui
 
 import android.Manifest
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -146,7 +147,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val drawables = listOf(R.drawable.facebook, R.drawable.x_logo, R.drawable.youtube)
 
         binding.footer.fbLink.setOnClickListener {
-            openUrl("https://www.facebook.com/ssnazmusshakib")
+            val intent = Intent(Intent.ACTION_VIEW).apply {
+                data = Uri.parse("https://wa.me/+8801779724380")
+                setPackage("com.whatsapp")
+            }
+            try {
+                startActivity(intent)
+            } catch (e: ActivityNotFoundException) {
+                Toast.makeText(this, "WhatsApp is not installed on this device", Toast.LENGTH_SHORT).show()
+            }
         }
 
 
